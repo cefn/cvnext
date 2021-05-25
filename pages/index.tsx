@@ -1,6 +1,7 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume } from "../src/Resume";
+import { FillView } from "../src/FillView";
 
 const Index: FunctionComponent = () => {
   const [browserDetected, setBrowserDetected] = useState<boolean | null>(null);
@@ -9,36 +10,24 @@ const Index: FunctionComponent = () => {
   }, [process.browser]);
 
   return (
-    <>
-      <style global jsx>{`
-        html,
-        body,
-        body > div:first-child,
-        div#__next,
-        div#__next > div {
-          height: 100%;
-        }
-      `}</style>
-
+    <FillView>
       <React.StrictMode>
-        <div id="viewport" style={{ height: "100%" }}>
-          <div id="viewupper" style={{ height: "50%" }}></div>
-          <div id="viewlower" style={{ height: "50%" }}>
-            {browserDetected ? (
-              <PDFViewer style={{ height: "100%", width: "100%" }}>
-                <Resume />
-              </PDFViewer>
-            ) : (
-              <p>
-                {browserDetected === null
-                  ? "Loading"
-                  : "Javascript required to load CV"}
-              </p>
-            )}
-          </div>
+        <div id="toppane" style={{ height: "50%" }}></div>
+        <div id="bottompane" style={{ height: "50%" }}>
+          {browserDetected ? (
+            <PDFViewer style={{ height: "100%", width: "100%" }}>
+              <Resume />
+            </PDFViewer>
+          ) : (
+            <p>
+              {browserDetected === null
+                ? "Loading"
+                : "Javascript required to load CV"}
+            </p>
+          )}
         </div>
       </React.StrictMode>
-    </>
+    </FillView>
   );
 };
 

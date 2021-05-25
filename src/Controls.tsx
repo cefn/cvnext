@@ -1,3 +1,3 @@
 import React, { FunctionComponent } from "react";
 
-const Controls: FunctionComponent = () => <p></p>;
+export const Controls: FunctionComponent = () => <p></p>;
