@@ -1,4 +1,4 @@
-import { mainPlan } from "../src/plan";
+import { Resume } from "../src/Resume";
 
 describe("", () => {
   test("", () => {});
