@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-mixer",
+  "name": "cvnext",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,11 +10,11 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@lauf/lauf-queue": "^0.1.0-beta.1",
-    "@lauf/lauf-runner": "^0.1.0-beta.3",
-    "@lauf/lauf-runner-primitives": "^0.1.0-beta.1",
-    "@lauf/lauf-store": "0.1.0-beta.2",
-    "@lauf/lauf-store-react": "^0.1.0-beta.1",
+    "@lauf/lauf-queue": "^0.1.0-beta.6",
+    "@lauf/lauf-runner": "^0.1.0-beta.6",
+    "@lauf/lauf-runner-primitives": "^0.1.0-beta.6",
+    "@lauf/lauf-store": "^0.1.0-beta.6",
+    "@lauf/lauf-store-react": "^0.1.0-beta.6",
     "@types/jest": "^26.0.23",
     "next": "^10.0.0",
     "react": "17.0.1",
