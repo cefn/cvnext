@@ -3,6 +3,9 @@ import dayjs from "dayjs";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import { Category, Engagement, CATEGORIES, ENGAGEMENTS, ADDRESS } from "./data";
 import { Immutable } from "./immutable";
+import { Store } from "@lauf/lauf-store";
+import { Profile } from "../pages/index";
+import { useSelected } from "@lauf/lauf-store-react";
 
 type TextHolder = FunctionComponent<{ children: string }>;
 
@@ -10,11 +13,11 @@ type TextHolder = FunctionComponent<{ children: string }>;
 Font.register({
   family: "Georgia",
   fonts: [
-    { src: "/fonts/Georgia.ttf" },
-    { src: "/fonts/Georgia_Bold.ttf", fontWeight: 700 },
-    { src: "/fonts/Georgia_Italic.ttf", fontStyle: "italic" },
+    { src: "./fonts/Georgia.ttf" },
+    { src: "./fonts/Georgia_Bold.ttf", fontWeight: 700 },
+    { src: "./fonts/Georgia_Italic.ttf", fontStyle: "italic" },
     {
-      src: "/fonts/Georgia_Bold_Italic.ttf",
+      src: "./fonts/Georgia_Bold_Italic.ttf",
       fontWeight: 700,
       fontStyle: "italic",
     },
@@ -89,16 +92,17 @@ const Address: TextHolder = ({ children }) => {
   );
 };
 
-const CategorySection: FunctionComponent<{ category: Category }> = ({
-  category,
-}) => (
+const CategorySection: FunctionComponent<{
+  category: Category;
+  engagements: Immutable<Engagement[]>;
+}> = ({ category, engagements }) => (
   <>
     <Heading>{category}</Heading>
-    {ENGAGEMENTS.filter((engagement) => engagement.tags.includes(category)).map(
-      (engagement, key) => (
+    {engagements
+      .filter((engagement) => engagement.tags.includes(category))
+      .map((engagement, key) => (
         <EngagementSection key={key} {...engagement} />
-      )
-    )}
+      ))}
   </>
 );
 
@@ -143,11 +147,20 @@ const EngagementSection: FunctionComponent<Immutable<Engagement>> = ({
   </>
 );
 
-export const Resume = () => (
-  <LayoutA4>
-    <Address>{ADDRESS}</Address>
-    {CATEGORIES.map((category, key) => (
-      <CategorySection {...{ category, key }} />
-    ))}
-  </LayoutA4>
-);
+export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
+  store,
+}) => {
+  const limit = useSelected(store, (state) => state.limit);
+
+  return (
+    <LayoutA4>
+      <Address>{ADDRESS}</Address>
+      {CATEGORIES.map((category, key) => (
+        <CategorySection
+          engagements={ENGAGEMENTS.slice(0, limit)}
+          {...{ category, key }}
+        />
+      ))}
+    </LayoutA4>
+  );
+};
