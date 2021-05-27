@@ -1,18 +1,9 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
+import { BasicStore, Immutable } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
-import { Resume } from "../src/Resume";
-import { FillView } from "../src/Viewport";
-import { Controls } from "../src/Controls";
-
-import { Store, BasicStore } from "@lauf/lauf-store";
-import { useSelected } from "@lauf/lauf-store-react";
-import { Engagement, ENGAGEMENTS } from "../src/data";
-import { Immutable } from "../src/immutable";
-
-export interface Profile {
-  limit: number;
-  limitedEngagements: Engagement[];
-}
+import { Resume, Viewport, Controls} from "../src/components/";
+import { Engagement, Profile } from "../src/domain/types"
+import { ENGAGEMENTS } from "../src/domain/data";
 
 const INITIAL_PROFILE: Immutable<Profile> = {
   limit: Number.MAX_SAFE_INTEGER,
@@ -22,7 +13,7 @@ const INITIAL_PROFILE: Immutable<Profile> = {
 const store = new BasicStore(INITIAL_PROFILE);
 
 const Index: FunctionComponent = () => (
-  <FillView>
+  <Viewport>
     <React.StrictMode>
       <div id="toppane" style={{ height: "10%" }}>
         <Controls store={store} />
@@ -41,7 +32,7 @@ const Index: FunctionComponent = () => (
         )}
       </div>
     </React.StrictMode>
-  </FillView>
+  </Viewport>
 );
 
 export default Index;

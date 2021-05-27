@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-export const FillView: FunctionComponent = ({ children }) => (
+export const Viewport: FunctionComponent = ({ children }) => (
   <>
     <style global jsx>{`
       html,

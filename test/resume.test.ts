@@ -1,4 +1,4 @@
-import { Resume } from "../src/Resume";
+import { Resume } from "../src/components";
 
 describe("", () => {
   test("", () => {});

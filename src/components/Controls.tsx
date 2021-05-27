@@ -1,7 +1,7 @@
+import { FunctionComponent } from "react";
 import { Store } from "@lauf/lauf-store";
-import React, { FunctionComponent } from "react";
-import { Profile } from "../pages";
-import { ENGAGEMENTS } from "./data";
+import { Profile } from "../domain/types";
+import { ENGAGEMENTS } from "../domain/data";
 
 export const Controls: FunctionComponent<{ store: Store<Profile> }> = ({
   store,

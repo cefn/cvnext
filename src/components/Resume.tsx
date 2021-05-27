@@ -1,28 +1,33 @@
-import React, { FunctionComponent } from "react";
-import dayjs from "dayjs";
-import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
-import { Category, Engagement, CATEGORIES, ENGAGEMENTS, ADDRESS } from "./data";
-import { Immutable } from "./immutable";
-import { Store } from "@lauf/lauf-store";
-import { Profile } from "../pages/index";
+import { FunctionComponent } from "react";
+import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
+import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
+import dayjs from "dayjs";
+import { CATEGORIES, Category, Engagement, Profile} from "../domain/types";
+import { ADDRESS, ENGAGEMENTS } from "../domain/data";
+
+function formatDate(date: Date): string {
+  return dayjs(date).format("MMM-YY");
+}
 
 type TextHolder = FunctionComponent<{ children: string }>;
 
-// Register fonts
-Font.register({
-  family: "Georgia",
-  fonts: [
-    { src: "./fonts/Georgia.ttf" },
-    { src: "./fonts/Georgia_Bold.ttf", fontWeight: 700 },
-    { src: "./fonts/Georgia_Italic.ttf", fontStyle: "italic" },
-    {
-      src: "./fonts/Georgia_Bold_Italic.ttf",
-      fontWeight: 700,
-      fontStyle: "italic",
-    },
-  ],
-});
+export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
+  store,
+}) => {
+  const limit = useSelected(store, (state) => state.limit);
+  return (
+    <LayoutA4>
+      <Address>{ADDRESS}</Address>
+      {CATEGORIES.map((category, key) => (
+        <CategorySection
+          engagements={ENGAGEMENTS.slice(0, limit)}
+          {...{ category, key }}
+        />
+      ))}
+    </LayoutA4>
+  );
+};
 
 const LayoutA4: FunctionComponent = ({ children }) => (
   <Document>
@@ -38,6 +43,32 @@ const LayoutA4: FunctionComponent = ({ children }) => (
       {children}
     </Page>
   </Document>
+);
+
+const Address: TextHolder = ({ children }) => {
+  const [name, ...lines] = children.split("\n");
+  return (
+    <Section>
+      <Text style={{ textAlign: "center" }}>
+        <Spaced>{name + "\n"}</Spaced>
+        {lines.join("\n")}
+      </Text>
+    </Section>
+  );
+};
+
+const CategorySection: FunctionComponent<{
+  category: Category;
+  engagements: Immutable<Engagement[]>;
+}> = ({ category, engagements }) => (
+  <>
+    <Heading>{category}</Heading>
+    {engagements
+      .filter((engagement) => engagement.tags.includes(category))
+      .map((engagement, key) => (
+        <EngagementSection key={key} {...engagement} />
+      ))}
+  </>
 );
 
 const Section: FunctionComponent = ({ children }) => (
@@ -80,36 +111,6 @@ const Heading: TextHolder = ({ children }) => (
   </Section>
 );
 
-const Address: TextHolder = ({ children }) => {
-  const [name, ...lines] = children.split("\n");
-  return (
-    <Section>
-      <Text style={{ textAlign: "center" }}>
-        <Spaced>{name + "\n"}</Spaced>
-        {lines.join("\n")}
-      </Text>
-    </Section>
-  );
-};
-
-const CategorySection: FunctionComponent<{
-  category: Category;
-  engagements: Immutable<Engagement[]>;
-}> = ({ category, engagements }) => (
-  <>
-    <Heading>{category}</Heading>
-    {engagements
-      .filter((engagement) => engagement.tags.includes(category))
-      .map((engagement, key) => (
-        <EngagementSection key={key} {...engagement} />
-      ))}
-  </>
-);
-
-function formatDate(date: Date): string {
-  return dayjs(date).format("MMM-YY");
-}
-
 const EngagementSection: FunctionComponent<Immutable<Engagement>> = ({
   title,
   subtitle,
@@ -147,20 +148,17 @@ const EngagementSection: FunctionComponent<Immutable<Engagement>> = ({
   </>
 );
 
-export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
-  store,
-}) => {
-  const limit = useSelected(store, (state) => state.limit);
-
-  return (
-    <LayoutA4>
-      <Address>{ADDRESS}</Address>
-      {CATEGORIES.map((category, key) => (
-        <CategorySection
-          engagements={ENGAGEMENTS.slice(0, limit)}
-          {...{ category, key }}
-        />
-      ))}
-    </LayoutA4>
-  );
-};
+// Register fonts
+Font.register({
+  family: "Georgia",
+  fonts: [
+    { src: "./fonts/Georgia.ttf" },
+    { src: "./fonts/Georgia_Bold.ttf", fontWeight: 700 },
+    { src: "./fonts/Georgia_Italic.ttf", fontStyle: "italic" },
+    {
+      src: "./fonts/Georgia_Bold_Italic.ttf",
+      fontWeight: 700,
+      fontStyle: "italic",
+    },
+  ],
+});

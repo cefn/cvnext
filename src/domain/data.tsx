@@ -1,18 +1,5 @@
-import { Immutable } from "./immutable";
-
-export type Engagement = {
-  title: string;
-  subtitle: string;
-  tags: Tag[];
-  start: Date;
-  stop?: Date;
-  description?: string;
-};
-
-export type Tag = typeof TAGS[number];
-export type Domain = typeof DOMAINS[number];
-export type Technology = typeof TECHNOLOGIES[number];
-export type Category = typeof CATEGORIES[number];
+import { Immutable } from "@lauf/lauf-store";
+import { Engagement } from "./types";
 
 export const ADDRESS = `Cefn Hoile
 4 Gardner Road Heysham, Morecambe, LA3 1RX 
@@ -20,31 +7,6 @@ export const ADDRESS = `Cefn Hoile
 cefn@cefn.com
 https://cefn.com` as const;
 
-export const CATEGORIES = ["employment", "education", "society"] as const;
-
-export const DOMAINS = [
-  "design",
-  "invention",
-  "enterprise",
-  "open source",
-  "arts",
-  "software architecture",
-  "software development",
-  "software testing",
-  "continuous integration",
-  "artificial intelligence",
-] as const;
-
-export const TECHNOLOGIES = [
-  "typescript",
-  "javascript",
-  "node",
-  "python",
-  "couchdb",
-  "solr",
-] as const;
-
-export const TAGS = [...CATEGORIES, ...DOMAINS, ...TECHNOLOGIES] as const;
 
 export const ENGAGEMENTS: Immutable<Engagement[]> = [
   /** EMPLOYMENT */
