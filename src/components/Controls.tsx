@@ -1,16 +1,16 @@
 import { FunctionComponent } from "react";
 import { Store } from "@lauf/lauf-store";
 import { Profile } from "../domain/types";
-import { ENGAGEMENTS } from "../domain/data";
+import { ENTRIES } from "../domain/data";
 
 export const Controls: FunctionComponent<{ store: Store<Profile> }> = ({
   store,
 }) => {
-  const max = ENGAGEMENTS.length;
+  const max = ENTRIES.length;
   return (
     <>
       <label>
-        Number of Engagements{" "}
+        Number of Entries{" "}
         <input
           type="range"
           id="limit"

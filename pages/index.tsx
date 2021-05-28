@@ -1,13 +1,13 @@
 import React, { useEffect, useState, FunctionComponent } from "react";
 import { BasicStore, Immutable } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
-import { Resume, Viewport, Controls} from "../src/components/";
-import { Engagement, Profile } from "../src/domain/types"
-import { ENGAGEMENTS } from "../src/domain/data";
+import { Resume, Viewport, Controls } from "../src/components/";
+import { Profile } from "../src/domain/types";
+import { ENTRIES } from "../src/domain/data";
 
 const INITIAL_PROFILE: Immutable<Profile> = {
   limit: Number.MAX_SAFE_INTEGER,
-  limitedEngagements: ENGAGEMENTS,
+  limitedEntries: ENTRIES,
 };
 
 const store = new BasicStore(INITIAL_PROFILE);

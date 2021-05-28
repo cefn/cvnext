@@ -3,8 +3,8 @@ import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { CATEGORIES, Category, Engagement, Profile} from "../domain/types";
-import { ADDRESS, ENGAGEMENTS } from "../domain/data";
+import { CATEGORIES, Category, Entry, Profile } from "../domain/types";
+import { ADDRESS, ENTRIES } from "../domain/data";
 
 function formatDate(date: Date): string {
   return dayjs(date).format("MMM-YY");
@@ -21,7 +21,7 @@ export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
       <Address>{ADDRESS}</Address>
       {CATEGORIES.map((category, key) => (
         <CategorySection
-          engagements={ENGAGEMENTS.slice(0, limit)}
+          entries={ENTRIES.slice(0, limit)}
           {...{ category, key }}
         />
       ))}
@@ -59,14 +59,14 @@ const Address: TextHolder = ({ children }) => {
 
 const CategorySection: FunctionComponent<{
   category: Category;
-  engagements: Immutable<Engagement[]>;
-}> = ({ category, engagements }) => (
+  entries: Immutable<Entry[]>;
+}> = ({ category, entries }) => (
   <>
     <Heading>{category}</Heading>
-    {engagements
-      .filter((engagement) => engagement.tags.includes(category))
-      .map((engagement, key) => (
-        <EngagementSection key={key} {...engagement} />
+    {entries
+      .filter((entry) => entry.tags.includes(category))
+      .map((entry, key) => (
+        <EntrySection key={key} {...entry} />
       ))}
   </>
 );
@@ -111,12 +111,12 @@ const Heading: TextHolder = ({ children }) => (
   </Section>
 );
 
-const EngagementSection: FunctionComponent<Immutable<Engagement>> = ({
-  title,
-  subtitle,
+const EntrySection: FunctionComponent<Immutable<Entry>> = ({
+  org: title,
+  title: subtitle,
   start,
   stop,
-  description,
+  intro: description,
 }) => (
   <>
     <Section>
