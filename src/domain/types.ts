@@ -1,5 +1,3 @@
-export const LAUNCH = new Date();
-
 export type Entry = {
   org: string;
   title: string;
@@ -11,13 +9,18 @@ export type Entry = {
   body?: string;
 };
 
-export const REVEALS = {
+export interface Profile {
+  limit: number;
+  limitedEntries: Entry[];
+}
+
+export const DETAILS = {
   None: ["org"],
   Some: ["org", "title"],
   Most: ["org", "title", "intro"],
   All: ["org", "title", "intro", "body"],
 } as const;
-type Reveal = keyof typeof REVEALS;
+export type Detail = keyof typeof DETAILS;
 
 export const CATEGORIES = ["employment", "education", "society"] as const;
 export type Category = typeof CATEGORIES[number];
@@ -60,14 +63,12 @@ export type Technology = typeof TECHNOLOGIES[number];
 export const TAGS = [...CATEGORIES, ...DOMAINS, ...TECHNOLOGIES] as const;
 export type Tag = typeof TAGS[number];
 
-export interface Profile {
-  limit: number;
-  limitedEntries: Entry[];
-}
+export const LAUNCH_TIME = new Date().getTime();
 
-export const ACCESSORS: Record<Sort, (entry: Entry) => number> = {
+/** Sort orders always numerical ascending  */
+export const SORT_ACCESSORS: Record<Sort, (entry: Entry) => number> = {
   precedence: (entry) => entry.precedence || 0,
-  recency: (entry) => LAUNCH.getTime() - entry.start.getTime(),
+  recency: (entry) => entry.start.getTime() - LAUNCH_TIME,
   duration: (entry) =>
     entry.stop
       ? entry.stop.getTime() - entry.start.getTime()

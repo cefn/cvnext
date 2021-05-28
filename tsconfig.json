@@ -3,6 +3,9 @@
   "compilerOptions": {
     "strict": true,
     "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "sourceMap": true,
     "downlevelIteration": true,
@@ -10,7 +13,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "target": "es2015",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es6", "dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "jsx": "preserve",
     "noEmit": false,

@@ -15,12 +15,12 @@ const store = new BasicStore(INITIAL_PROFILE);
 const Index: FunctionComponent = () => (
   <Viewport>
     <React.StrictMode>
-      <div id="toppane" style={{ height: "10%" }}>
+      <div id="toppane" style={{ height: "20%" }}>
         <Controls store={store} />
       </div>
       <div
         id="bottompane"
-        style={{ height: "90%" }}
+        style={{ height: "80%" }}
         suppressHydrationWarning={true}
       >
         {process.browser ? (
