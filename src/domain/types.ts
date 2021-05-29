@@ -1,17 +1,21 @@
+import { Immutable } from "@lauf/lauf-store";
+import { ENTRIES } from "./data";
+
 export type Entry = {
   org: string;
   title: string;
-  precedence?: number;
   tags: Tag[];
   start: Date;
   stop?: Date;
   intro?: string;
   body?: string;
+  boost?: number;
 };
 
-export interface Profile {
+export interface AppState {
   limit: number;
-  limitedEntries: Entry[];
+  filteredEntries: Entry[];
+  sortOrder: Sort[];
 }
 
 export const DETAILS = {
@@ -24,16 +28,18 @@ export type Detail = keyof typeof DETAILS;
 
 export const CATEGORIES = ["employment", "education", "society"] as const;
 export type Category = typeof CATEGORIES[number];
+export function getCategory(entry: Immutable<Entry>): Category | null {
+  for (const tag of entry.tags) {
+    for (const category of CATEGORIES) {
+      if (tag === category) {
+        return tag;
+      }
+    }
+  }
+  return null;
+}
 
-export const SORTS = [
-  "precedence",
-  "recency",
-  "duration",
-  ...CATEGORIES,
-] as const;
-export type Sort = typeof SORTS[number];
-
-export const DOMAINS = [
+export const DISCIPLINES = [
   "design",
   "invention",
   "management",
@@ -48,7 +54,7 @@ export const DOMAINS = [
   "devops",
   "machine learning",
 ] as const;
-export type Domain = typeof DOMAINS[number];
+export type Discipline = typeof DISCIPLINES[number];
 
 export const TECHNOLOGIES = [
   "typescript",
@@ -57,23 +63,41 @@ export const TECHNOLOGIES = [
   "python",
   "couchdb",
   "solr",
+  "aws",
+  "docker",
+  "jest",
 ] as const;
 export type Technology = typeof TECHNOLOGIES[number];
 
-export const TAGS = [...CATEGORIES, ...DOMAINS, ...TECHNOLOGIES] as const;
+export const TAGS = [...CATEGORIES, ...DISCIPLINES, ...TECHNOLOGIES] as const;
 export type Tag = typeof TAGS[number];
 
 export const LAUNCH_TIME = new Date().getTime();
 
-/** Sort orders always numerical ascending  */
-export const SORT_ACCESSORS: Record<Sort, (entry: Entry) => number> = {
-  precedence: (entry) => entry.precedence || 0,
-  recency: (entry) => entry.start.getTime() - LAUNCH_TIME,
+export const SORTS = ["boost", "recency", "duration", "category"] as const;
+export type Sort = typeof SORTS[number];
+
+/** Sort orders always numerical ascending by number */
+export type Accessor = (entry: Entry) => number;
+export const SORT_ACCESSORS: Record<Sort, Accessor> = {
+  boost: (entry) => entry.boost || 0,
+  recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative to reverse order
   duration: (entry) =>
     entry.stop
       ? entry.stop.getTime() - entry.start.getTime()
-      : Number.MAX_SAFE_INTEGER,
-  employment: (entry) => (entry.tags.includes("employment") ? 1 : 0),
-  education: (entry) => (entry.tags.includes("education") ? 1 : 0),
-  society: (entry) => (entry.tags.includes("society") ? 1 : 0),
-};
+      : LAUNCH_TIME - entry.start.getTime(),
+  category: (entry) => {
+    const category = getCategory(entry);
+    if (category === null) {
+      return 0;
+    } else {
+      return CATEGORIES.length - CATEGORIES.indexOf(category); //Negative to reverse order
+    }
+  },
+} as const;
+
+export const INITIAL_PROFILE: Immutable<AppState> = {
+  limit: Number.MAX_SAFE_INTEGER,
+  filteredEntries: ENTRIES,
+  sortOrder: SORTS,
+} as const;

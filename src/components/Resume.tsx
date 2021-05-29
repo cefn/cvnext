@@ -1,20 +1,18 @@
-import { FunctionComponent } from "react";
+import { FC } from "react";
 import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { CATEGORIES, Category, Entry, Profile } from "../domain/types";
+import { CATEGORIES, Category, Entry, AppState } from "../domain/types";
 import { ADDRESS, ENTRIES } from "../domain/data";
 
 function formatDate(date: Date): string {
   return dayjs(date).format("MMM-YY");
 }
 
-type TextHolder = FunctionComponent<{ children: string }>;
+type TextHolder = FC<{ children: string }>;
 
-export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
-  store,
-}) => {
+export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => {
   const limit = useSelected(store, (state) => state.limit);
   return (
     <LayoutA4>
@@ -29,7 +27,7 @@ export const Resume: FunctionComponent<{ store: Store<Profile> }> = ({
   );
 };
 
-const LayoutA4: FunctionComponent = ({ children }) => (
+const LayoutA4: FC = ({ children }) => (
   <Document>
     <Page
       size="A4"
@@ -57,7 +55,7 @@ const Address: TextHolder = ({ children }) => {
   );
 };
 
-const CategorySection: FunctionComponent<{
+const CategorySection: FC<{
   category: Category;
   entries: Immutable<Entry[]>;
 }> = ({ category, entries }) => (
@@ -71,7 +69,7 @@ const CategorySection: FunctionComponent<{
   </>
 );
 
-const Section: FunctionComponent = ({ children }) => (
+const Section: FC = ({ children }) => (
   <View
     style={{
       marginRight: "2.54cm",
@@ -111,7 +109,7 @@ const Heading: TextHolder = ({ children }) => (
   </Section>
 );
 
-const EntrySection: FunctionComponent<Immutable<Entry>> = ({
+const EntrySection: FC<Immutable<Entry>> = ({
   org: title,
   title: subtitle,
   start,

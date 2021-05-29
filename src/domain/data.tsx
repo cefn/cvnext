@@ -9,12 +9,23 @@ https://cefn.com` as const;
 
 export const ENTRIES: Immutable<Entry[]> = [
   /** EMPLOYMENT */
-  // {
-  //   org: "BBC",
-  //   title: "Senior Software Engineer",
-  //   tags: ["devops", "continuous integration"],
-  //   start: new Date("2018-08-01")
-  // },
+  {
+    org: "BBC",
+    title: "Senior Software Engineer",
+    tags: [
+      "employment",
+      "devops",
+      "CI/CD",
+      "typescript",
+      "javascript",
+      "python",
+      "solr",
+    ],
+    start: new Date("2018-08-01"),
+    intro:
+      "Full Stack Developer in Kanban-led Devops team for pan-BBC Navigation Experience and Search API",
+    body: "Continuous delivery of bbc.co.uk Nav bar and multi-platform Search for e.g. Sport, iPlayer, Sounds, News. Coding and testing in Typescript, Javascript, Java, Python, Ruby, Groovy. Testing with Jest, Cucumber, Selenium, Frontends React. Backends Linux, AWS services, Solr, EC2, Docker",
+  },
   {
     org: "@VGKits and @ShrimpingIt",
     title: "Instigator and Maintainer",
@@ -99,8 +110,8 @@ export const ENTRIES: Immutable<Entry[]> = [
     org: "MRes, Lancaster University",
     title: "Design for the Digital Economy",
     tags: ["education"],
-    start: new Date("2012-09-01"),
-    stop: new Date("2013-06-01"),
+    start: new Date("2011-09-01"),
+    stop: new Date("2012-06-01"),
   },
   {
     org: "Massachusetts Institute of Technology",
@@ -157,11 +168,12 @@ export const ENTRIES: Immutable<Entry[]> = [
       "Developer of artificial ecosystem, driven by real-time stock market data, shown at the Tate Gallery, covered by BBC news and selected in shortlist for Brian Sewell's Alternative Turner prize.",
   },
   // {
-  //   title:"",
-  //   subtitle:"",
-  //   tags:[""],
+  //   org: "",
+  //   title: "",
+  //   tags: [""],
   //   start: new Date(""),
   //   stop: new Date(""),
-  //   description:""
+  //   intro: "",
+  //   body: "",
   // },
 ] as const;

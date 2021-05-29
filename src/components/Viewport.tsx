@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
+import { FC } from "react";
 
-export const Viewport: FunctionComponent = ({ children }) => (
+export const Viewport: FC = ({ children }) => (
   <>
     <style global jsx>{`
       html,

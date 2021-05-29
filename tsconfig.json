@@ -8,6 +8,7 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "sourceMap": true,
+    "inlineSourceMap": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

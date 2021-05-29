@@ -1,26 +1,20 @@
-import React, { useEffect, useState, FunctionComponent } from "react";
-import { BasicStore, Immutable } from "@lauf/lauf-store";
+import React, { FunctionComponent } from "react";
+import { BasicStore } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import { Profile } from "../src/domain/types";
-import { ENTRIES } from "../src/domain/data";
+import { AppState, INITIAL_PROFILE } from "../src/domain/types";
 
-const INITIAL_PROFILE: Immutable<Profile> = {
-  limit: Number.MAX_SAFE_INTEGER,
-  limitedEntries: ENTRIES,
-};
-
-const store = new BasicStore(INITIAL_PROFILE);
+const store = new BasicStore<AppState>(INITIAL_PROFILE);
 
 const Index: FunctionComponent = () => (
   <Viewport>
     <React.StrictMode>
-      <div id="toppane" style={{ height: "20%" }}>
+      <div id="toppane" style={{ height: "30%" }}>
         <Controls store={store} />
       </div>
       <div
         id="bottompane"
-        style={{ height: "80%" }}
+        style={{ height: "70%" }}
         suppressHydrationWarning={true}
       >
         {process.browser ? (
