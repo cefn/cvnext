@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { makeStyles, Grid, Paper, Slider, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
 import { AppState } from "../domain/types";
 import { DetailRadio } from "./controls/DetailRadio";

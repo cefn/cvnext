@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 import { BasicStore } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import { AppState, INITIAL_PROFILE } from "../src/domain/types";
+import { AppState, INITIAL_APPSTATE } from "../src/domain/types";
 
-const store = new BasicStore<AppState>(INITIAL_PROFILE);
+const store = new BasicStore<AppState>(INITIAL_APPSTATE);
 
 const Index: FunctionComponent = () => (
   <Viewport>

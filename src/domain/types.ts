@@ -17,6 +17,7 @@ export interface AppState {
   limit: number;
   filteredEntries: Entry[];
   sortOrder: Sort[];
+  detail: Detail;
 }
 
 export const DETAILS = {
@@ -26,6 +27,9 @@ export const DETAILS = {
   All: ["org", "title", "intro", "body"],
 } as const;
 export type Detail = keyof typeof DETAILS;
+export function getDetailLevel(detail: Detail) {
+  return Object.keys(DETAILS).indexOf(detail);
+}
 
 export const CATEGORIES = ["employment", "education", "society"] as const;
 export type Category = typeof CATEGORIES[number];
@@ -97,8 +101,9 @@ export const SORT_ACCESSORS: Record<Sort, Accessor> = {
   },
 } as const;
 
-export const INITIAL_PROFILE: Immutable<AppState> = {
+export const INITIAL_APPSTATE: Immutable<AppState> = {
   limit: Number.MAX_SAFE_INTEGER,
   filteredEntries: sortEntries(ALL_ENTRIES, SORTS),
   sortOrder: SORTS,
+  detail: "All",
 } as const;

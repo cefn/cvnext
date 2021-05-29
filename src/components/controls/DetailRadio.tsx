@@ -7,12 +7,13 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState, DETAILS } from "../../domain/types";
+import { AppState, Detail, DETAILS } from "../../domain/types";
+import { useSelected } from "@lauf/lauf-store-react";
 
 const DETAIL_KEYS = Object.keys(DETAILS);
-const MOST_DETAIL = DETAIL_KEYS[DETAIL_KEYS.length - 1];
 
 export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
+  const detail = useSelected(store, (state) => state.detail);
   return (
     <FormControl component="fieldset" style={{ padding: "10%" }}>
       <FormLabel style={{ height: "16%" }} component="label" color={"primary"}>
@@ -22,8 +23,12 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
         style={{ height: "64%" }}
         aria-label="Detail"
         name="detail"
-        defaultValue={MOST_DETAIL}
-        onChange={() => ({})}
+        value={detail}
+        onChange={(event) =>
+          store.edit(
+            (draft) => void (draft.detail = event.target.value as Detail)
+          )
+        }
       >
         {DETAIL_KEYS.map((detailKey) => (
           <FormControlLabel
