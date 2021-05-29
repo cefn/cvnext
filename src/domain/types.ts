@@ -1,5 +1,6 @@
 import { Immutable } from "@lauf/lauf-store";
-import { ENTRIES } from "./data";
+import { sortEntries } from "../util";
+import { ALL_ENTRIES } from "./data";
 
 export type Entry = {
   org: string;
@@ -78,7 +79,7 @@ export const SORTS = ["boost", "recency", "duration", "category"] as const;
 export type Sort = typeof SORTS[number];
 
 /** Sort orders always numerical ascending by number */
-export type Accessor = (entry: Entry) => number;
+export type Accessor = (entry: Immutable<Entry>) => number;
 export const SORT_ACCESSORS: Record<Sort, Accessor> = {
   boost: (entry) => entry.boost || 0,
   recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative to reverse order
@@ -98,6 +99,6 @@ export const SORT_ACCESSORS: Record<Sort, Accessor> = {
 
 export const INITIAL_PROFILE: Immutable<AppState> = {
   limit: Number.MAX_SAFE_INTEGER,
-  filteredEntries: ENTRIES,
+  filteredEntries: sortEntries(ALL_ENTRIES, SORTS),
   sortOrder: SORTS,
 } as const;

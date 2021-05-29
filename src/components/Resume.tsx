@@ -4,7 +4,7 @@ import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
 import { CATEGORIES, Category, Entry, AppState } from "../domain/types";
-import { ADDRESS, ENTRIES } from "../domain/data";
+import { ADDRESS, ALL_ENTRIES } from "../domain/data";
 
 function formatDate(date: Date): string {
   return dayjs(date).format("MMM-YY");
@@ -14,12 +14,13 @@ type TextHolder = FC<{ children: string }>;
 
 export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => {
   const limit = useSelected(store, (state) => state.limit);
+  const filteredEntries = useSelected(store, (state) => state.filteredEntries);
   return (
     <LayoutA4>
       <Address>{ADDRESS}</Address>
       {CATEGORIES.map((category, key) => (
         <CategorySection
-          entries={ENTRIES.slice(0, limit)}
+          entries={filteredEntries.slice(0, limit)}
           {...{ category, key }}
         />
       ))}

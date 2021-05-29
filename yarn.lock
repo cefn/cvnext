@@ -575,17 +575,17 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@lauf/lauf-store-react@^0.1.0-beta.6":
-  version "0.1.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@lauf/lauf-store-react/-/lauf-store-react-0.1.0-beta.6.tgz#f1043389ca9e39485253c6a787aecd65a9c54bbf"
-  integrity sha512-3aKBYP7L+m6YP2wiIQqPZsyIP1//edN+7J8FyKgz0gay2NGCfGL6k+5aqp6sJY4uYDhCFGt7saVIfhM+y2qwKg==
+"@lauf/lauf-store-react@^0.1.0-beta.7":
+  version "0.1.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@lauf/lauf-store-react/-/lauf-store-react-0.1.0-beta.7.tgz#fac03af585c4dd24164e3c09e00ed37526413770"
+  integrity sha512-mfpWSmDIrgILGZJ9THvcTxdG5YTpWnV4bnLi+K5mzg22P7fzTX1s6wvoxs70hAqZfP6py2dqyc4fFTmvH2jDXw==
   dependencies:
-    "@lauf/lauf-store" "^0.1.0-beta.6"
+    "@lauf/lauf-store" "^0.1.0-beta.7"
 
-"@lauf/lauf-store@^0.1.0-beta.6":
-  version "0.1.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@lauf/lauf-store/-/lauf-store-0.1.0-beta.6.tgz#32a9c61b05cebdd4e57286e055eb5efe4b78ae65"
-  integrity sha512-4j/apH4wtMxSLArflsv+UEv+RukJHAUQ3oucKsGZzuJdldcxt8D1CF/mTXBMfpD8oNqO4M/KWnXpnO1MhpYyKA==
+"@lauf/lauf-store@^0.1.0-beta.7":
+  version "0.1.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@lauf/lauf-store/-/lauf-store-0.1.0-beta.7.tgz#edd8de253dee1fe68b29903c70e3613fabb9e1ba"
+  integrity sha512-kskfKdFHSjJhffr4ciAsJqTQ/TWpuUgDS0yFv4ZI2WZbm3VD5VWSQXSSrPeBlBcuU4vCu3rRxyWI1gzymu2Zhg==
   dependencies:
     immer "^8.0.1"
     lodash.get "^4.4.2"

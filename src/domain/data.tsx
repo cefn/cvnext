@@ -7,7 +7,7 @@ export const ADDRESS = `Cefn Hoile
 cefn@cefn.com
 https://cefn.com` as const;
 
-export const ENTRIES: Immutable<Entry[]> = [
+export const ALL_ENTRIES: Immutable<Entry[]> = [
   /** EMPLOYMENT */
   {
     org: "BBC",

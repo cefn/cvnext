@@ -1,3 +1,4 @@
+import { Immutable } from "@lauf/lauf-store";
 import { Entry, CATEGORIES, SORTS } from "../src/domain/types";
 import { sortEntries } from "../src/util";
 
@@ -17,60 +18,60 @@ function createEntry(uid: number & keyof typeof CATEGORIES): Entry {
 
 describe("sortEntries: individual field order of default SORTS", () => {
   test("Entries with ascending boost are sorted to descending", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), boost: 0 },
       { ...createEntry(1), boost: 1 },
       { ...createEntry(2), boost: 2 },
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("Entries with ascending recency are sorted to descending", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), stop: new Date(`2000-12-01`) },
       { ...createEntry(1), stop: new Date(`2001-12-01`) },
       { ...createEntry(2), stop: new Date(`2002-12-01`) },
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("Entries with fixed recency, ascending duration are sorted to descending", () => {
     const stop = new Date(`2002-12-01`);
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), start: new Date(`2002-01-01`), stop }, //1 years
       { ...createEntry(1), start: new Date(`2001-01-01`), stop }, //2 years
       { ...createEntry(2), start: new Date(`2000-01-01`), stop }, //3 years
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("Entries with ascending category importance are sorted to descending", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), tags: ["society"] },
       { ...createEntry(1), tags: ["education"] },
       { ...createEntry(2), tags: ["employment"] },
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 });
 
 describe("sortEntries: relative priority of fields of default SORTS", () => {
   test("boost dominates recency", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), boost: 0, stop: new Date(`2002-12-01`) },
       { ...createEntry(1), boost: 1, stop: new Date(`2001-12-01`) },
       { ...createEntry(2), boost: 2, stop: new Date(`2000-12-01`) },
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("recency dominates duration", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       {
         ...createEntry(0),
         start: new Date(`1998-01-01`),
@@ -87,13 +88,13 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
         stop: new Date(`2002-12-31`),
       }, // duration 1 years
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("duration dominates category", () => {
     const stop = new Date(`2002-12-01`);
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       {
         ...createEntry(0),
         start: new Date(`2002-01-01`),
@@ -113,17 +114,17 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
         tags: ["society"],
       }, //3 years
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("Entries with ascending category importance are sorted to descending", () => {
-    const entries: ReadonlyArray<Entry> = [
+    const entries: Immutable<Entry[]> = [
       { ...createEntry(0), tags: ["society"] },
       { ...createEntry(1), tags: ["education"] },
       { ...createEntry(2), tags: ["employment"] },
     ];
-    const sortedEntries: ReadonlyArray<Entry> = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SORTS);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 });
