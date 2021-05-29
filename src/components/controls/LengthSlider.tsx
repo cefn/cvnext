@@ -35,6 +35,9 @@ export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => (
       valueLabelDisplay="auto"
       valueLabelFormat={(value) => ALL_ENTRIES.length - value}
       marks={marks}
+      onChange={(_event, value) =>
+        store.edit((draft) => void (draft.limit = sliderPos(Number(value))))
+      }
     />
   </FormControl>
 );

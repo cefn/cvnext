@@ -8,7 +8,6 @@ import {
   Category,
   Entry,
   AppState,
-  DETAILS,
   getDetailLevel,
 } from "../domain/types";
 import { ADDRESS } from "../domain/data";
@@ -63,7 +62,7 @@ const CategorySection: FC<{
   category: Category;
 }> = ({ store, category }) => {
   const filteredEntries = useSelected(store, (state) => state.filteredEntries);
-  //elements split into first, rest prevents orphaned heading
+  //elements split into [first, ...rest] prevents orphaned heading
   const [first, ...rest] = filteredEntries
     .filter((entry) => entry.tags.includes(category))
     .map((entry, key) => <EntrySection key={key} {...{ store, entry }} />);
