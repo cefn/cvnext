@@ -10,9 +10,6 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@lauf/lauf-queue": "^0.1.0-beta.6",
-    "@lauf/lauf-runner": "^0.1.0-beta.6",
-    "@lauf/lauf-runner-primitives": "^0.1.0-beta.6",
     "@lauf/lauf-store": "^0.1.0-beta.6",
     "@lauf/lauf-store-react": "^0.1.0-beta.6",
     "@material-ui/core": "^4.11.4",
