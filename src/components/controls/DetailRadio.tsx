@@ -27,6 +27,7 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
       >
         {DETAIL_KEYS.map((detailKey) => (
           <FormControlLabel
+            key={detailKey}
             value={detailKey}
             control={<Radio color={"primary"} size={"small"} />}
             label={detailKey}
