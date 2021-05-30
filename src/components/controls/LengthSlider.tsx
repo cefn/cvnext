@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Store } from "@lauf/lauf-store";
-import { FormControl, FormLabel, Slider } from "@material-ui/core";
+import { FormLabel, Paper, Slider, Grid } from "@material-ui/core";
 import { AppState } from "../../domain/types";
 import { ALL_ENTRIES } from "../../domain/data";
+import { useSelected } from "@lauf/lauf-store-react";
 
 /**
  * Mapping natural direction for document length measure (increasing length downwards)
@@ -19,25 +20,40 @@ const marks = [
   { label: "All", value: sliderPos(ALL_ENTRIES.length) },
 ];
 
-export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => (
-  <FormControl component="fieldset" style={{ height: "80%", padding: "5%" }}>
-    <FormLabel style={{ height: "16%" }} component="label" color={"primary"}>
-      Items
-    </FormLabel>
-    <Slider
-      style={{ height: "64%" }}
-      orientation={"vertical"}
-      defaultValue={sliderPos(ALL_ENTRIES.length)}
-      min={sliderPos(ALL_ENTRIES.length)}
-      max={sliderPos(0)}
-      aria-labelledby="entries-slider-label"
-      step={1}
-      valueLabelDisplay="auto"
-      valueLabelFormat={(value) => ALL_ENTRIES.length - value}
-      marks={marks}
-      onChange={(_event, value) =>
-        store.edit((draft) => void (draft.limit = sliderPos(Number(value))))
-      }
-    />
-  </FormControl>
-);
+export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => {
+  const limit = useSelected(store, (state) => state.limit);
+  return (
+    <>
+      <Grid container style={{ height: "100%" }}>
+        <Grid item xs={12}>
+          <FormLabel
+            component="label"
+            id="length-slider-label"
+            color={"primary"}
+          >
+            Items
+          </FormLabel>
+        </Grid>
+        <Grid item xs={12} style={{ height: "80%" }}>
+          <Slider
+            style={{ height: "100%" }}
+            orientation={"vertical"}
+            value={sliderPos(limit)}
+            min={sliderPos(ALL_ENTRIES.length)}
+            max={sliderPos(0)}
+            aria-labelledby="length-slider-label"
+            step={1}
+            valueLabelDisplay="auto"
+            valueLabelFormat={(value) => ALL_ENTRIES.length - value}
+            marks={marks}
+            onChange={(_event, value) =>
+              store.edit(
+                (draft) => void (draft.limit = sliderPos(Number(value)))
+              )
+            }
+          />
+        </Grid>
+      </Grid>
+    </>
+  );
+};

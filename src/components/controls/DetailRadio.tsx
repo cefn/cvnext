@@ -3,6 +3,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  Paper,
   Radio,
   RadioGroup,
 } from "@material-ui/core";
@@ -10,17 +11,14 @@ import { Store } from "@lauf/lauf-store";
 import { AppState, Detail, DETAILS } from "../../domain/types";
 import { useSelected } from "@lauf/lauf-store-react";
 
-const DETAIL_KEYS = Object.keys(DETAILS);
-
 export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
   const detail = useSelected(store, (state) => state.detail);
   return (
-    <FormControl component="fieldset" style={{ padding: "10%" }}>
-      <FormLabel style={{ height: "16%" }} component="label" color={"primary"}>
+    <>
+      <FormLabel component="label" color={"primary"}>
         Detail
       </FormLabel>
       <RadioGroup
-        style={{ height: "64%" }}
         aria-label="Detail"
         name="detail"
         value={detail}
@@ -30,7 +28,7 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
           )
         }
       >
-        {DETAIL_KEYS.map((detailKey) => (
+        {Object.keys(DETAILS).map((detailKey) => (
           <FormControlLabel
             key={detailKey}
             value={detailKey}
@@ -39,6 +37,6 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
           />
         ))}
       </RadioGroup>
-    </FormControl>
+    </>
   );
 };

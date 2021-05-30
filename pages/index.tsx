@@ -1,22 +1,25 @@
 import React, { FunctionComponent } from "react";
-import { castDraft } from "immer";
 import { BasicStore, Immutable, Watcher } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import { AppState, INITIAL_APPSTATE, SORTS } from "../src/domain/types";
+import { AppState, Entry, INITIAL_APPSTATE, Sort } from "../src/domain/types";
 import { sortEntries } from "../src/util";
 import { ALL_ENTRIES } from "../src/domain/data";
 
 const store = new BasicStore<AppState>(INITIAL_APPSTATE);
 
-let limit = -1;
+let lastLimit = -1;
+let lastSortOrder: ReadonlyArray<Sort> = [];
 const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
-  if (state.limit !== limit) {
-    limit = state.limit;
+  console.log(state);
+  const { limit, sortOrder } = state;
+  if (limit !== lastLimit || sortOrder !== lastSortOrder) {
+    lastLimit = limit;
+    lastSortOrder = sortOrder;
+    let filteredEntries = sortEntries(ALL_ENTRIES, sortOrder);
+    filteredEntries = filteredEntries.slice(0, limit);
     store.edit((draft) => {
-      draft.filteredEntries = castDraft(
-        sortEntries(ALL_ENTRIES, SORTS).slice(0, limit)
-      );
+      draft.priorityEntries = filteredEntries as Entry[];
     });
   }
 };

@@ -3,14 +3,9 @@ import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import {
-  CATEGORIES,
-  Category,
-  Entry,
-  AppState,
-  getDetailLevel,
-} from "../domain/types";
-import { ADDRESS } from "../domain/data";
+import { Category, Entry, AppState, DETAILS } from "../domain/types";
+import { ADDRESS, CATEGORIES } from "../domain/data";
+import { sortEntries } from "../util";
 
 function formatDate(date: Date): string {
   return dayjs(date).format("MMM-YY");
@@ -22,8 +17,8 @@ export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => {
   return (
     <LayoutA4>
       <Address>{ADDRESS}</Address>
-      {CATEGORIES.map((category, key) => (
-        <CategorySection {...{ store, category, key }} />
+      {CATEGORIES.map((category) => (
+        <CategorySection {...{ store, category }} />
       ))}
     </LayoutA4>
   );
@@ -61,18 +56,22 @@ const CategorySection: FC<{
   store: Store<AppState>;
   category: Category;
 }> = ({ store, category }) => {
-  const filteredEntries = useSelected(store, (state) => state.filteredEntries);
-  //elements split into [first, ...rest] prevents orphaned heading
-  const [first, ...rest] = filteredEntries
-    .filter((entry) => entry.tags.includes(category))
-    .map((entry, key) => <EntrySection key={key} {...{ store, entry }} />);
+  const filteredEntries = useSelected(store, (state) => state.priorityEntries);
+  const sortedEntries = sortEntries(filteredEntries, ["recency"]);
+  const categoryEntries = sortedEntries.filter((entry) =>
+    entry.tags.includes(category)
+  );
+  const [firstItem, ...remainingItems] = categoryEntries.map((entry, key) => (
+    <EntrySection key={key} {...{ store, entry }} />
+  ));
   return (
     <>
+      {/* Non-wrapping view prevents orphaned heading */}
       <View wrap={false}>
         <Heading>{category}</Heading>
-        {first}
+        {firstItem}
       </View>
-      {rest}
+      {remainingItems}
     </>
   );
 };
@@ -119,10 +118,21 @@ const Heading: TextHolder = ({ children }) => (
 
 const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
   store,
-  entry: { org: title, title: subtitle, start, stop, intro: description },
+  entry: { org, title, start, stop, intro, body },
 }) => {
   const detail = useSelected(store, (store) => store.detail);
-  const detailLevel = getDetailLevel(detail);
+
+  function fieldVisible(...queriedFields: (keyof Entry)[]) {
+    for (const detailField of DETAILS[detail]) {
+      for (const queriedField of queriedFields) {
+        if (detailField === queriedField) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   const dateElement = (
     <View style={{ flexDirection: "column", color: "grey" }}>
       <Text>{`${formatDate(start as Date)}-${
@@ -142,15 +152,17 @@ const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
               justifyContent: "space-between",
             }}
           >
-            <View style={{ flexDirection: "column", textAlign: "left" }}>
-              <Text style={{ marginTop: "0.2cm", fontWeight: "bold" }}>
-                {title}
-              </Text>
-            </View>
+            {fieldVisible("org") && (
+              <View style={{ flexDirection: "column", textAlign: "left" }}>
+                <Text style={{ marginTop: "0.2cm", fontWeight: "bold" }}>
+                  {org}
+                </Text>
+              </View>
+            )}
             {/* detail:"None" (no subtitle included) date aligns with title*/}
-            {detailLevel == getDetailLevel("None") && dateElement}
+            {!fieldVisible("title") && dateElement}
           </View>
-          {detailLevel >= getDetailLevel("Some") && (
+          {fieldVisible("title", "intro", "body") && (
             <>
               <View
                 style={{
@@ -160,13 +172,16 @@ const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
                 }}
               >
                 <View style={{ flexDirection: "column", textAlign: "left" }}>
-                  <Text style={{ fontStyle: "italic" }}>{subtitle}</Text>
+                  <Text style={{ fontStyle: "italic" }}>{title}</Text>
                 </View>
                 {/* detail:"Some" (subtitle included) date aligns with subtitle*/}
-                {detailLevel > getDetailLevel("None") && dateElement}
+                {fieldVisible("title") && dateElement}
               </View>
-              {detailLevel >= getDetailLevel("Most") && description && (
-                <Text>{description}</Text>
+              {fieldVisible("intro", "body") && (
+                <Text>
+                  {fieldVisible("intro") && intro}{" "}
+                  {fieldVisible("body") && body}
+                </Text>
               )}
             </>
           )}
