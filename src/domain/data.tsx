@@ -76,14 +76,13 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     body: "Conceived and delivered projects documenting Arduino-compatible and ESP8266 electronics for UK educators with global impact, with a series of workshops run for commercial and community benefit.",
   },
   {
-    org: "Self-employed",
-    title: "Contract Embedded Software Engineer",
+    org: "Contractor",
+    title: "Self-employed Embedded Software Engineer",
     tags: ["employment", "facilitation"],
     start: new Date("2011-04-01"),
     stop: new Date("2018-08-01"),
-    intro:
-      "Bespoke rapid prototyping and integration of embedded electronics for various clients",
-    body: "BBC R&D; prototyped 'Connected Fob' screenless device for tagging radio programs. BBC Knowledge&Learning; M.I.High 'communicator' pencil built, programmed in public workshops. Physical computing workshops, studio prototypes for BBC Microbit team. Litfest; 'Reading Lights' illuminated poetry in Lancaster Library, interactive website for Lancaster witch trials character-exploration. Photobot; Pi-based coin-triggered compositing and dye-sublimation printing networked photo booth. Adafruit; commissioned to establish Adafruit_Blinka driver conformance layer a 232-star open source project on github",
+    intro: "Bespoke rapid prototyping and integration of embedded electronics",
+    body: "BBC R&D; prototyped 'Connected Fob' screenless device for tagging radio programs. BBC Knowledge&Learning; M.I.High 'communicator' pencil built, programmed in public workshops. Physical computing workshops, studio prototypes for BBC Microbit team. Litfest; 'Reading Lights' illuminated poetry in Lancaster Library, interactive website for Lancaster witch trials character-exploration. Photobot; Pi-based coin-triggered compositing and dye-sublimation printing networked photo booth. Adafruit; commissioned to establish Adafruit_Blinka driver conformance layer, now a 232-star open source project on github",
   },
   {
     org: "Imagination@Lancaster University",

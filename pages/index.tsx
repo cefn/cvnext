@@ -5,6 +5,7 @@ import { Resume, Viewport, Controls } from "../src/components/";
 import { AppState, Entry, INITIAL_APPSTATE, Sort } from "../src/domain/types";
 import { sortEntries } from "../src/util";
 import { ALL_ENTRIES } from "../src/domain/data";
+import { Grid } from "@material-ui/core";
 
 const store = new BasicStore<AppState>(INITIAL_APPSTATE);
 
@@ -16,10 +17,12 @@ const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
   if (limit !== lastLimit || sortOrder !== lastSortOrder) {
     lastLimit = limit;
     lastSortOrder = sortOrder;
-    let filteredEntries = sortEntries(ALL_ENTRIES, sortOrder);
-    filteredEntries = filteredEntries.slice(0, limit);
     store.edit((draft) => {
-      draft.priorityEntries = filteredEntries as Entry[];
+      const priorityEntries = sortEntries(ALL_ENTRIES, sortOrder).slice(
+        0,
+        limit
+      ) as Entry[]; //draft can't be immutable
+      draft.priorityEntries = priorityEntries;
     });
   }
 };
@@ -30,22 +33,20 @@ const Index: FunctionComponent = () => {
   return (
     <Viewport>
       <React.StrictMode>
-        <div id="toppane" style={{ height: "30%" }}>
-          <Controls store={store} />
-        </div>
-        <div
-          id="bottompane"
-          style={{ height: "70%" }}
-          suppressHydrationWarning={true}
-        >
-          {process.browser ? (
-            <PDFViewer style={{ height: "100%", width: "100%" }}>
-              <Resume store={store} />
-            </PDFViewer>
-          ) : (
-            <p>Please enable Javascript to load this CV</p>
-          )}
-        </div>
+        <Grid container style={{ height: "100%" }}>
+          <Grid item xs={3} style={{ height: "100%" }}>
+            <Controls store={store} />
+          </Grid>
+          <Grid item xs={9} suppressHydrationWarning={true}>
+            {process.browser ? (
+              <PDFViewer style={{ height: "100%", width: "100%" }}>
+                <Resume store={store} />
+              </PDFViewer>
+            ) : (
+              <p>Please enable Javascript to load this CV</p>
+            )}
+          </Grid>
+        </Grid>
       </React.StrictMode>
     </Viewport>
   );

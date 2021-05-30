@@ -7,7 +7,7 @@ import DragHandleOutlinedIcon from "@material-ui/icons/DragHandleOutlined";
 import { Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { List as MovableList, arrayMove } from "react-movable";
-import { AppState, DETAILS } from "../../domain/types";
+import { AppState } from "../../domain/types";
 import { ALL_ENTRIES } from "../../domain/data";
 
 export function PriorityList({ store }: { store: Store<AppState> }) {
@@ -55,6 +55,10 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
               ) : (
                 <DragHandleOutlinedIcon />
               )
+              // for management PeopleIcon SupervisedUserIcon
+              // for technology SettingsIcon, BuildIcon
+              // for art PaletteIcon BrushIcon
+              // for education SchoolIcon
             }
           />
         </ListItem>

@@ -18,7 +18,7 @@ export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => {
     <LayoutA4>
       <Address>{ADDRESS}</Address>
       {CATEGORIES.map((category) => (
-        <CategorySection {...{ store, category }} />
+        <CategorySection {...{ store, category, key: category }} />
       ))}
     </LayoutA4>
   );
@@ -56,12 +56,12 @@ const CategorySection: FC<{
   store: Store<AppState>;
   category: Category;
 }> = ({ store, category }) => {
-  const filteredEntries = useSelected(store, (state) => state.priorityEntries);
-  const sortedEntries = sortEntries(filteredEntries, ["recency"]);
-  const categoryEntries = sortedEntries.filter((entry) =>
+  const priorityEntries = useSelected(store, (state) => state.priorityEntries);
+  const categoryEntries = priorityEntries.filter((entry) =>
     entry.tags.includes(category)
   );
-  const [firstItem, ...remainingItems] = categoryEntries.map((entry, key) => (
+  const sortedEntries = sortEntries(categoryEntries, ["recency"]);
+  const [firstItem, ...remainingItems] = sortedEntries.map((entry, key) => (
     <EntrySection key={key} {...{ store, entry }} />
   ));
   return (

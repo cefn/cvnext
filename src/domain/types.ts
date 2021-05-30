@@ -27,10 +27,10 @@ export interface AppState {
 }
 
 export const DETAILS = {
-  None: ["org"],
-  Some: ["org", "title"],
-  Most: ["org", "title", "intro"],
-  All: ["org", "title", "intro", "body"],
+  Minimum: ["org"],
+  Title: ["org", "title"],
+  Summary: ["org", "title", "intro"],
+  Full: ["org", "title", "intro", "body"],
 } as const;
 export type Detail = keyof typeof DETAILS;
 
@@ -74,8 +74,8 @@ export const SORT_ACCESSORS: Record<Sort, Accessor> = {
 } as const;
 
 export const INITIAL_APPSTATE: Immutable<AppState> = {
-  detail: "All",
+  detail: "Full",
   sortOrder: SORTS,
-  limit: ALL_ENTRIES.length,
+  limit: 5, //ALL_ENTRIES.length,
   priorityEntries: sortEntries(ALL_ENTRIES, SORTS),
 } as const;

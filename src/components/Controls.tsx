@@ -8,28 +8,26 @@ import { ResetButton } from "./controls/ResetButton";
 import { PriorityList } from "./controls/PriorityList";
 
 export const Controls: FC<{ store: Store<AppState> }> = ({ store }) => (
-  <div style={{ flexGrow: 1 }}>
-    <Grid container direction="row" justify="center" alignItems="stretch">
-      <Grid item xs={2}>
-        <Paper style={{ height: "95%", padding: "5%" }}>
+  <div style={{ display: "flex", flexDirection: "column" }}>
+    <Paper style={{ padding: "5%" }}>
+      <Grid container>
+        <Grid item xs={6}>
           <DetailRadio store={store} />
-        </Paper>
-      </Grid>
-      <Grid item xs={2}>
-        <Paper style={{ height: "95%", padding: "5%" }}>
-          <LengthSlider store={store} />
-        </Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper style={{ height: "95%", padding: "5%" }}>
-          <PriorityList store={store} />
-        </Paper>
-      </Grid>
-      <Grid item xs={4}>
-        <Paper style={{ height: "95%", padding: "5%" }}>
+        </Grid>
+        <Grid item xs={6}>
           <ResetButton store={store} />
-        </Paper>
+        </Grid>
       </Grid>
-    </Grid>
+    </Paper>
+    <Paper style={{ padding: "5%" }}>
+      <Grid container>
+        <Grid item xs={6}>
+          <LengthSlider store={store} />
+        </Grid>
+        <Grid item xs={6}>
+          <PriorityList store={store} />
+        </Grid>
+      </Grid>
+    </Paper>
   </div>
 );
