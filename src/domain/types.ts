@@ -51,11 +51,37 @@ export function getCategory(entry: Immutable<Entry>): Category | null {
 
 export const LAUNCH_TIME = new Date().getTime();
 
-export const SORTS = ["boost", "recency", "duration", "category"] as const;
+/** Sorting operator (for numerical scales ascending by number) */
+export type Accessor = (entry: Immutable<Entry>) => number;
+
+/** Accessor ensuring Entries dominate if they contain specific tags */
+function createTagAccessor(...tags: Tag[]): Accessor {
+  return (entry) => {
+    for (const tag of tags) {
+      if (entry.tags.includes(tag)) {
+        return 1;
+      }
+    }
+    return 0;
+  };
+}
+
+export const SORTS = [
+  "boost",
+  "recency",
+  "duration",
+  "employment",
+  "education",
+  "society",
+  "engineering",
+  "invention",
+  "management",
+  "machine learning",
+  "art",
+  "design",
+] as const;
 export type Sort = typeof SORTS[number];
 
-/** Sort orders always numerical ascending by number */
-export type Accessor = (entry: Immutable<Entry>) => number;
 export const SORT_ACCESSORS: Record<Sort, Accessor> = {
   boost: (entry) => entry.boost || 0,
   recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative reverses order
@@ -63,19 +89,20 @@ export const SORT_ACCESSORS: Record<Sort, Accessor> = {
     entry.stop
       ? entry.stop.getTime() - entry.start.getTime()
       : LAUNCH_TIME - entry.start.getTime(),
-  category: (entry) => {
-    const category = getCategory(entry);
-    if (category === null) {
-      return 0;
-    } else {
-      return CATEGORIES.length - CATEGORIES.indexOf(category); //Negative reverses order
-    }
-  },
+  employment: createTagAccessor("employment"),
+  education: createTagAccessor("education"),
+  society: createTagAccessor("society"),
+  engineering: createTagAccessor("coding", "electronics"),
+  management: createTagAccessor("management"),
+  "machine learning": createTagAccessor("machine learning"),
+  invention: createTagAccessor("invention"),
+  design: createTagAccessor("design"),
+  art: createTagAccessor("art"),
 } as const;
 
 export const INITIAL_APPSTATE: Immutable<AppState> = {
   detail: "Full",
   sortOrder: SORTS,
-  limit: 5, //ALL_ENTRIES.length,
+  limit: ALL_ENTRIES.length,
   priorityEntries: sortEntries(ALL_ENTRIES, SORTS),
 } as const;

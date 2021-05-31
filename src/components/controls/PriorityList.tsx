@@ -50,15 +50,21 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
                 <HistoryIcon />
               ) : value === "duration" ? (
                 <TimelapseIcon />
-              ) : value === "category" ? (
-                <CategoryIcon />
               ) : (
                 <DragHandleOutlinedIcon />
               )
-              // for management PeopleIcon SupervisedUserIcon
-              // for technology SettingsIcon, BuildIcon
-              // for art PaletteIcon BrushIcon
+              // for employment WorkIcon
               // for education SchoolIcon
+              // for society
+              // for code CodeIcon
+              // for electronics MemoryIcon (BuildIcon, MouseIcon)
+              // for invention Emoji (bulb), Bath
+              // for management PeopleIcon SupervisedUserIcon
+              // for machinelearning SettingsIcon, StorageIcon
+              // for art PaletteIcon BrushIcon
+              // for design CategoryIcon
+              // for sports SportsHandball
+              // for writing FormatQuote
             }
           />
         </ListItem>

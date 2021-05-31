@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { FormLabel, Grid, Paper } from "@material-ui/core";
+import { FC, ReactNode } from "react";
+import { Grid, Paper } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
 import { AppState } from "../domain/types";
 import { DetailRadio } from "./controls/DetailRadio";
 import { LengthSlider } from "./controls/LengthSlider";
-import { ResetButton } from "./controls/ResetButton";
 import { PriorityList } from "./controls/PriorityList";
+import { DownloadButton, SourceButton, ResetButton } from "./controls/Buttons";
 
 export const Controls: FC<{ store: Store<AppState> }> = ({ store }) => (
   <div style={{ display: "flex", flexDirection: "column" }}>
@@ -15,7 +15,11 @@ export const Controls: FC<{ store: Store<AppState> }> = ({ store }) => (
           <DetailRadio store={store} />
         </Grid>
         <Grid item xs={6}>
-          <ResetButton store={store} />
+          <Grid container direction={"column"} spacing={3}>
+            <DownloadButton store={store} />
+            <SourceButton />
+            <ResetButton store={store} />
+          </Grid>
         </Grid>
       </Grid>
     </Paper>
