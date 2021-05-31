@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";

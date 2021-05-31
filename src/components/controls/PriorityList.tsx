@@ -1,13 +1,6 @@
+import React from "react";
+import { Chip, FormLabel, Grid } from "@material-ui/core";
 import {
-  Paper,
-  List,
-  ListItem,
-  Chip,
-  FormLabel,
-  Grid,
-} from "@material-ui/core";
-import {
-  Favorite,
   History,
   Timelapse,
   Category,

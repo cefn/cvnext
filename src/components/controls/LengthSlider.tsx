@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Store } from "@lauf/lauf-store";
 import { FormLabel, Paper, Slider, Grid } from "@material-ui/core";
 import { AppState } from "../../types";

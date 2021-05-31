@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
 import { AppState } from "../types";

@@ -15,7 +15,7 @@
     "target": "es2015",
     "lib": ["es6", "dom", "dom.iterable", "esnext"],
     "module": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
     "noEmit": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,

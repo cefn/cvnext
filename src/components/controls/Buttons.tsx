@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Button } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
 import { AppState } from "../../types";

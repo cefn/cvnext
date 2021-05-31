@@ -1,3 +1,4 @@
+import React from "react";
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
 import { Immutable, Store } from "@lauf/lauf-store";
