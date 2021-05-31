@@ -1,14 +1,12 @@
 import { FC } from "react";
 import {
-  FormControl,
   FormControlLabel,
   FormLabel,
-  Paper,
   Radio,
   RadioGroup,
 } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState, Detail, DETAILS } from "../../domain/types";
+import { AppState, Detail, DETAILS } from "../../types";
 import { useSelected } from "@lauf/lauf-store-react";
 
 export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {

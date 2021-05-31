@@ -3,8 +3,8 @@ import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { Category, Entry, AppState, DETAILS } from "../domain/types";
-import { ADDRESS, CATEGORIES } from "../domain/data";
+import { Category, Entry, AppState, DETAILS } from "../types";
+import { ADDRESS, CATEGORIES } from "../data";
 import { sortEntries } from "../util";
 
 function formatDate(date: Date): string {

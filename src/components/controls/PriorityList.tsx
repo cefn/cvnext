@@ -27,8 +27,8 @@ import {
 import { Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { List as MovableList, arrayMove } from "react-movable";
-import { AppState } from "../../domain/types";
-import { ALL_ENTRIES } from "../../domain/data";
+import { AppState } from "../../types";
+import { ALL_ENTRIES } from "../../data";
 
 export function PriorityList({ store }: { store: Store<AppState> }) {
   const scorePriority = useSelected(store, (state) => state.scorePriority);

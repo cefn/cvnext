@@ -1,9 +1,7 @@
 import { FC } from "react";
 import { Button } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { INITIAL_APPSTATE, AppState } from "../../domain/types";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import { Resume } from "../Resume";
+import { INITIAL_APPSTATE, AppState } from "../../types";
 import { downloadPdf } from "../../util";
 
 const BUTTON_DEFAULTS = {

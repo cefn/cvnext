@@ -2,14 +2,9 @@ import React, { FunctionComponent } from "react";
 import { BasicStore, Immutable, Watcher } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import {
-  AppState,
-  Entry,
-  INITIAL_APPSTATE,
-  ScoreName,
-} from "../src/domain/types";
+import { AppState, Entry, INITIAL_APPSTATE, ScoreName } from "../src/types";
 import { sortEntries } from "../src/util";
-import { ALL_ENTRIES } from "../src/domain/data";
+import { ALL_ENTRIES } from "../src/data";
 import { Grid } from "@material-ui/core";
 
 const store = new BasicStore<AppState>(INITIAL_APPSTATE);

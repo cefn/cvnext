@@ -1,5 +1,5 @@
 import { Immutable } from "@lauf/lauf-store";
-import { sortEntries } from "../util";
+import { sortEntries } from "./util";
 import {
   ALL_ENTRIES,
   CATEGORIES,

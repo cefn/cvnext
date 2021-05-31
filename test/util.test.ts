@@ -1,6 +1,6 @@
 import { Immutable } from "@lauf/lauf-store";
-import { CATEGORIES } from "../src/domain/data";
-import { Entry, SCORENAMES } from "../src/domain/types";
+import { CATEGORIES } from "../src/data";
+import { Entry, SCORENAMES } from "../src/types";
 import { sortEntries } from "../src/util";
 
 /** Creates minimal entry with text fields varying by index, no tags, fixed dates

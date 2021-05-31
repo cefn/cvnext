@@ -1,7 +1,7 @@
 import { saveAs } from "file-saver";
 import { pdf } from "@react-pdf/renderer";
 import { Immutable, Store } from "@lauf/lauf-store";
-import { AppState, Entry, ScoreName, SCORERS } from "./domain/types";
+import { AppState, Entry, ScoreName, SCORERS } from "./types";
 import { Resume } from "./components";
 
 export async function downloadPdf(store: Store<AppState>) {
