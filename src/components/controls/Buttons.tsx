@@ -18,7 +18,7 @@ export const DownloadButton: FC<{ store: Store<AppState> }> = ({ store }) => (
         {...BUTTON_DEFAULTS}
         onClick={() => downloadPdf(store)}
       >
-        Download Current PDF
+        Download
       </Button>
     )}
   </>
@@ -32,6 +32,6 @@ export const ResetButton: FC<{ store: Store<AppState> }> = ({ store }) => (
 
 export const SourceButton = () => (
   <Button {...BUTTON_DEFAULTS} href="https://github.com/cefn/cvnext">
-    View Source
+    About
   </Button>
 );

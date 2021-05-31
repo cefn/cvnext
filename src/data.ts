@@ -109,7 +109,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     start: new Date("2015-06-01"),
     stop: new Date("2017-01-01"),
     intro: `Designed and deployed real-time digital facilitation tool for high-profile design workshops. `,
-    body: "System guided delegates on iPads through brainstorming process,auto-generating 'keynotes' for design workshops. Developed Utopiary MQTT synchronization system. Docker, Node, JQuery, MQTT, RethinkDB.",
+    body: "System guided delegates on iPads through brainstorming process, auto-generating 'keynotes' for design workshops. Developed Utopiary MQTT synchronization system. Docker, Node, JQuery, MQTT, RethinkDB.",
   },
   {
     org: "O'Reilly and Make Publishing",
@@ -219,7 +219,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   },
   {
     org: "University of Sussex (Computer Science)",
-    title: "MSC, Evolutionary and Adaptive Systems",
+    title: "MSc, Evolutionary and Adaptive Systems",
     tags: ["education", "coding", "machine learning"],
     start: new Date("1998-09-01"),
     stop: new Date("2000-06-01"),
