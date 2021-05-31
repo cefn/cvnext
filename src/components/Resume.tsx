@@ -3,9 +3,16 @@ import { Immutable, Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
-import { Category, Entry, AppState, DETAILS } from "../types";
+import { Category, Entry, AppState } from "../types";
 import { ADDRESS, CATEGORIES } from "../data";
 import { sortEntries } from "../util";
+
+export const DETAILS = {
+  Minimum: ["org"],
+  Title: ["org", "title"],
+  Summary: ["org", "title", "intro"],
+  Full: ["org", "title", "intro", "body"],
+} as const;
 
 function formatDate(date: Date): string {
   return dayjs(date).format("MMM-YY");

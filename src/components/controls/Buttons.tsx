@@ -1,8 +1,9 @@
 import { FC } from "react";
 import { Button } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { INITIAL_APPSTATE, AppState } from "../../types";
+import { AppState } from "../../types";
 import { downloadPdf } from "../../util";
+import { INITIAL_APPSTATE } from "../../logic";
 
 const BUTTON_DEFAULTS = {
   variant: "contained",

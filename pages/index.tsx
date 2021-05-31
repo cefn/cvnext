@@ -1,33 +1,14 @@
 import React, { FunctionComponent } from "react";
-import { BasicStore, Immutable, Watcher } from "@lauf/lauf-store";
+import { BasicStore } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import { AppState, Entry, INITIAL_APPSTATE, ScoreName } from "../src/types";
-import { sortEntries } from "../src/util";
-import { ALL_ENTRIES } from "../src/data";
+import { AppState } from "../src/types";
 import { Grid } from "@material-ui/core";
+import { ensurePriorityEntries, INITIAL_APPSTATE } from "../src/logic";
 
 const store = new BasicStore<AppState>(INITIAL_APPSTATE);
 
-let lastLimit = -1;
-let lastSortOrder: ReadonlyArray<ScoreName> = [];
-const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
-  console.log(state);
-  const { limit, scorePriority: sortOrder } = state;
-  if (limit !== lastLimit || sortOrder !== lastSortOrder) {
-    lastLimit = limit;
-    lastSortOrder = sortOrder;
-    store.edit((draft) => {
-      const priorityEntries = sortEntries(ALL_ENTRIES, sortOrder).slice(
-        0,
-        limit
-      ) as Entry[]; //draft can't be immutable
-      draft.priorityEntries = priorityEntries;
-    });
-  }
-};
-limitWatcher(store.read());
-store.watch(limitWatcher);
+ensurePriorityEntries(store);
 
 const Index: FunctionComponent = () => {
   return (
