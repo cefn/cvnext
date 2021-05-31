@@ -4,10 +4,10 @@ import { createTagsScorer, LAUNCH_TIME } from "./util";
 export const SCORENAMES = [
   // "boost",
   "recency",
-  "duration",
   "employment",
   "education",
   "society",
+  "duration",
   "coding",
   "electronics",
   "invention",
