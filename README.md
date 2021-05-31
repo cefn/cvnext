@@ -1,12 +1,18 @@
 # CV Composer
 
-This is an experimental project to construct and statically-publish a client-side Single Page Application (SPA).
+This experimental project dynamically composes PDF CVs using [example data](./src/data.ts) from my career history.
 
-The SPA dynamically composes PDF CVs using [example data](./src/data.ts) from my career history to be previewed in the page and optionally downloaded.
+Visitors are invited to select a summarisation level, preferred document length and relative priority of different disciplines.
 
-The project is written in Typescript using NextJS, React and my own state-management solution [@lauf/lauf-store](https://www.npmjs.com/package/@lauf/lauf-store).
+The resulting PDF can be previewed dynamically in the page and optionally downloaded.
 
-The resulting SPA is published to https://cefn.com/cv where it can be demonstrated in a Chrome browser. Multi-platform support or fully responsive controls to target e.g. Mobile, Tablet is unlikely for this experimental testing ground.
+To experiment, please use the Chrome browser. A snapshot of the SPA is published at https://cefn.com/cv
+
+A standard PDF CV without filtering or summarisation is available at https://cefn.com/blog/files/cv.pdf
+
+The project is written in Typescript using NextJS, React and my own state-management solution [@lauf/lauf-store](https://www.npmjs.com/package/@lauf/lauf-store). It is published as a static, purely-client-side Single Page Application.
+
+Multi-platform support, decent media queries, breakpoints or fully responsive controls to target e.g. Mobile, Tablet is unlikely and not worth it for this experimental testing ground.
 
 ## Reference commands
 
