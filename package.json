@@ -10,21 +10,29 @@
     "check": "tsc --noEmit"
   },
   "dependencies": {
-    "@lauf/lauf-queue": "^0.1.0-beta.6",
-    "@lauf/lauf-runner": "^0.1.0-beta.6",
-    "@lauf/lauf-runner-primitives": "^0.1.0-beta.6",
-    "@lauf/lauf-store": "^0.1.0-beta.6",
-    "@lauf/lauf-store-react": "^0.1.0-beta.6",
+    "@lauf/lauf-runner-primitives": "^0.1.0-beta.8",
+    "@lauf/lauf-store": "^0.1.0-beta.8",
+    "@lauf/lauf-store-react": "^0.1.0-beta.8",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@react-pdf/renderer": "^2.0.13",
+    "@types/file-saver": "^2.0.2",
     "@types/jest": "^26.0.23",
+    "dayjs": "^1.10.4",
+    "file-saver": "^2.0.5",
+    "immer": "^9.0.2",
     "next": "^10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-is": "^17.0.1",
+    "react-movable": "^2.5.4",
     "styled-components": "^5.2.1",
     "ts-loader": "8.2.0"
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.7",
+    "jest": "^27.0.1",
+    "ts-jest": "^27.0.1",
     "typescript": "^4.2.2"
   }
 }

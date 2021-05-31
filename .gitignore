@@ -1,3 +1,5 @@
+# CEFN: Suppress tooling folders
+.vscode
 # CEFN: Don't commit static export
 out
 # Logs
