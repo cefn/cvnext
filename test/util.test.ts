@@ -1,6 +1,6 @@
 import { Immutable } from "@lauf/lauf-store";
 import { CATEGORIES } from "../src/domain/data";
-import { Entry, SORTS } from "../src/domain/types";
+import { Entry, SCORENAMES } from "../src/domain/types";
 import { sortEntries } from "../src/util";
 
 /** Creates minimal entry with text fields varying by index, no tags, fixed dates
@@ -24,7 +24,7 @@ describe("sortEntries: individual field order of default SORTS", () => {
       { ...createEntry(1), boost: 1 },
       { ...createEntry(2), boost: 2 },
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -34,7 +34,7 @@ describe("sortEntries: individual field order of default SORTS", () => {
       { ...createEntry(1), stop: new Date(`2001-12-01`) },
       { ...createEntry(2), stop: new Date(`2002-12-01`) },
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -45,7 +45,7 @@ describe("sortEntries: individual field order of default SORTS", () => {
       { ...createEntry(1), start: new Date(`2001-01-01`), stop }, //2 years
       { ...createEntry(2), start: new Date(`2000-01-01`), stop }, //3 years
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -55,7 +55,7 @@ describe("sortEntries: individual field order of default SORTS", () => {
       { ...createEntry(1), tags: ["education"] },
       { ...createEntry(2), tags: ["employment"] },
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 });
@@ -67,7 +67,7 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
       { ...createEntry(1), boost: 1, stop: new Date(`2001-12-01`) },
       { ...createEntry(2), boost: 2, stop: new Date(`2000-12-01`) },
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -89,7 +89,7 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
         stop: new Date(`2002-12-31`),
       }, // duration 1 years
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -115,7 +115,7 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
         tags: ["society"],
       }, //3 years
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
@@ -125,7 +125,7 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
       { ...createEntry(1), tags: ["education"] },
       { ...createEntry(2), tags: ["employment"] },
     ];
-    const sortedEntries = sortEntries(entries, SORTS);
+    const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 });

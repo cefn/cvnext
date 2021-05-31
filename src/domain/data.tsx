@@ -53,6 +53,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     title: "Senior Software Engineer",
     tags: [
       "employment",
+      "coding",
       "devops",
       "CI/CD",
       "typescript",
@@ -68,7 +69,15 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "@VGKits and @ShrimpingIt",
     title: "Instigator and Maintainer",
-    tags: ["employment", "management", "facilitation", "python"],
+    tags: [
+      "employment",
+      "coding",
+      "electronics",
+      "invention",
+      "management",
+      "facilitation",
+      "python",
+    ],
     start: new Date("2012-04-01"),
     stop: new Date("2018-08-01"),
     intro:
@@ -78,7 +87,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Contractor",
     title: "Self-employed Embedded Software Engineer",
-    tags: ["employment", "facilitation"],
+    tags: ["employment", "coding", "electronics", "facilitation", "invention"],
     start: new Date("2011-04-01"),
     stop: new Date("2018-08-01"),
     intro: "Bespoke rapid prototyping and integration of embedded electronics",
@@ -113,7 +122,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "BT PLC R&D",
     title: "Principal Researcher",
-    tags: ["employment"],
+    tags: ["employment", "coding"],
     start: new Date("2000-06-01"),
     stop: new Date("2011-03-01"),
     intro: "Technology researcher, strategist, programmer and inventor.",
@@ -124,10 +133,10 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     title: "Inventor",
     tags: [
       "employment",
+      "coding",
+      "electronics",
       "design",
       "invention",
-      "electronics",
-      "coding",
       "making",
     ],
     start: new Date("2010-02-01"),
@@ -140,11 +149,11 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     title: "Inventor in Residence",
     tags: [
       "employment",
+      "coding",
+      "electronics",
       "design",
       "invention",
-      "electronics",
       "facilitation",
-      "coding",
       "making",
     ],
     start: new Date("2009-06-01"),
@@ -175,14 +184,14 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "MRes, Lancaster University",
     title: "Design for the Digital Economy",
-    tags: ["education", "design"],
+    tags: ["education", "coding", "design"],
     start: new Date("2011-09-01"),
     stop: new Date("2012-06-01"),
   },
   {
     org: "Massachusetts Institute of Technology",
     title: "Visiting Scientist Secondment, CSAIL, Media Lab",
-    tags: ["education", "invention", "javascript"],
+    tags: ["education", "coding", "invention", "javascript"],
     start: new Date("2005-02-01"),
     stop: new Date("2007-06-01"),
   },
@@ -196,7 +205,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "University of Sussex (Computer Science)",
     title: "MSC, Evolutionary and Adaptive Systems",
-    tags: ["education", "machine learning"],
+    tags: ["education", "coding", "machine learning"],
     start: new Date("1998-09-01"),
     stop: new Date("2000-06-01"),
   },
@@ -235,7 +244,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Morecambe Mini Illuminations",
     title: "Convener and curator",
-    tags: ["society", "art", "electronics", "coding"],
+    tags: ["society", "coding", "art", "electronics"],
     start: new Date("2016-06-01"),
     stop: new Date("2019-11-01"),
     intro:
@@ -245,7 +254,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Curiosity Collective",
     title: "Member of interactive arts collective",
-    tags: ["society"],
+    tags: ["society", "coding"],
     start: new Date("2005-01-01"),
     stop: new Date("2012-04-01"),
     body: "Founder member of experimental cyberart group. Created interactive installations for five different shows touring Ipswich and throughout the UK, including the 'Human Kaleidoscope (video)', 'Semaphore to SMS' gateway (machine vision), 'Mime-driven handcar' (ultrasonics), 'Curiosity Killed the Cat' (microcontroller) 'Grass is always greener', (visual illusion) and many more.",

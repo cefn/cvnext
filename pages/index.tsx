@@ -2,7 +2,12 @@ import React, { FunctionComponent } from "react";
 import { BasicStore, Immutable, Watcher } from "@lauf/lauf-store";
 import { PDFViewer } from "@react-pdf/renderer";
 import { Resume, Viewport, Controls } from "../src/components/";
-import { AppState, Entry, INITIAL_APPSTATE, Sort } from "../src/domain/types";
+import {
+  AppState,
+  Entry,
+  INITIAL_APPSTATE,
+  ScoreName,
+} from "../src/domain/types";
 import { sortEntries } from "../src/util";
 import { ALL_ENTRIES } from "../src/domain/data";
 import { Grid } from "@material-ui/core";
@@ -10,10 +15,10 @@ import { Grid } from "@material-ui/core";
 const store = new BasicStore<AppState>(INITIAL_APPSTATE);
 
 let lastLimit = -1;
-let lastSortOrder: ReadonlyArray<Sort> = [];
+let lastSortOrder: ReadonlyArray<ScoreName> = [];
 const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
   console.log(state);
-  const { limit, sortOrder } = state;
+  const { limit, scorePriority: sortOrder } = state;
   if (limit !== lastLimit || sortOrder !== lastSortOrder) {
     lastLimit = limit;
     lastSortOrder = sortOrder;

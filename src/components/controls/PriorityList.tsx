@@ -31,17 +31,17 @@ import { AppState } from "../../domain/types";
 import { ALL_ENTRIES } from "../../domain/data";
 
 export function PriorityList({ store }: { store: Store<AppState> }) {
-  const sortOrder = useSelected(store, (state) => state.sortOrder);
+  const scorePriority = useSelected(store, (state) => state.scorePriority);
   const limit = useSelected(store, (state) => state.limit);
   const disabled = limit === ALL_ENTRIES.length;
   return (
     <MovableList
-      values={[...sortOrder]}
+      values={[...scorePriority]}
       onChange={({ oldIndex, newIndex }) =>
         store.edit(
           (draft) =>
-            void (draft.sortOrder = arrayMove(
-              draft.sortOrder,
+            void (draft.scorePriority = arrayMove(
+              draft.scorePriority,
               oldIndex,
               newIndex
             ))
@@ -100,16 +100,6 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
               ) : (
                 <DragHandleOutlined />
               )
-              // for society HomeWork
-              // for code CodeIcon
-              // for electronics MemoryIcon (BuildIcon, MouseIcon)
-              // for invention Emoji (bulb), Bath
-              // for management PeopleIcon SupervisedUserIcon
-              // for machinelearning SettingsIcon, StorageIcon
-              // for art PaletteIcon BrushIcon
-              // for design CategoryIcon
-              // for sports SportsHandball
-              // for writing FormatQuote
             }
           />
         </Grid>
@@ -117,3 +107,14 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
     />
   );
 }
+
+// for society HomeWork, Language
+// for code CodeIcon
+// for electronics MemoryIcon (BuildIcon, MouseIcon)
+// for invention Emoji (bulb), Bath
+// for management PeopleIcon SupervisedUserIcon
+// for machinelearning SettingsIcon, StorageIcon
+// for art PaletteIcon BrushIcon
+// for design CategoryIcon
+// for sports SportsHandball
+// for writing FormatQuote

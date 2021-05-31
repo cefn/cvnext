@@ -21,7 +21,7 @@ export type Entry = {
 
 export interface AppState {
   detail: Detail;
-  sortOrder: Sort[];
+  scorePriority: ScoreName[];
   limit: number;
   priorityEntries: Entry[];
 }
@@ -52,10 +52,10 @@ export function getCategory(entry: Immutable<Entry>): Category | null {
 export const LAUNCH_TIME = new Date().getTime();
 
 /** Sorting operator (for numerical scales ascending by number) */
-export type Accessor = (entry: Immutable<Entry>) => number;
+export type Scorer = (entry: Immutable<Entry>) => number;
 
-/** Accessor ensuring Entries dominate if they contain specific tags */
-function createTagAccessor(...tags: Tag[]): Accessor {
+/** Scorer ensuring Entries dominate if they contain specific tags */
+function createTagsScorer(...tags: Tag[]): Scorer {
   return (entry) => {
     for (const tag of tags) {
       if (entry.tags.includes(tag)) {
@@ -66,7 +66,7 @@ function createTagAccessor(...tags: Tag[]): Accessor {
   };
 }
 
-export const SORTS = [
+export const SCORENAMES = [
   // "boost",
   "recency",
   "duration",
@@ -83,32 +83,32 @@ export const SORTS = [
   "sport",
   "writing",
 ] as const;
-export type Sort = typeof SORTS[number];
+export type ScoreName = typeof SCORENAMES[number];
 
-export const SORT_ACCESSORS: Record<Sort, Accessor> = {
+export const SCORERS: Record<ScoreName, Scorer> = {
   // boost: (entry) => entry.boost || 0,
   recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative reverses order
   duration: (entry) =>
     entry.stop
       ? entry.stop.getTime() - entry.start.getTime()
       : LAUNCH_TIME - entry.start.getTime(),
-  employment: createTagAccessor("employment"),
-  education: createTagAccessor("education"),
-  society: createTagAccessor("society"),
-  coding: createTagAccessor("coding"),
-  electronics: createTagAccessor("electronics"),
-  management: createTagAccessor("management"),
-  "machine learning": createTagAccessor("machine learning"),
-  invention: createTagAccessor("invention"),
-  design: createTagAccessor("design"),
-  art: createTagAccessor("art"),
-  sport: createTagAccessor("sport"),
-  writing: createTagAccessor("writing"),
+  employment: createTagsScorer("employment"),
+  education: createTagsScorer("education"),
+  society: createTagsScorer("society"),
+  coding: createTagsScorer("coding"),
+  electronics: createTagsScorer("electronics"),
+  management: createTagsScorer("management"),
+  "machine learning": createTagsScorer("machine learning"),
+  invention: createTagsScorer("invention"),
+  design: createTagsScorer("design"),
+  art: createTagsScorer("art"),
+  sport: createTagsScorer("sport"),
+  writing: createTagsScorer("writing"),
 } as const;
 
 export const INITIAL_APPSTATE: Immutable<AppState> = {
   detail: "Full",
-  sortOrder: SORTS,
+  scorePriority: SCORENAMES,
   limit: ALL_ENTRIES.length,
-  priorityEntries: sortEntries(ALL_ENTRIES, SORTS),
+  priorityEntries: sortEntries(ALL_ENTRIES, SCORENAMES),
 } as const;
