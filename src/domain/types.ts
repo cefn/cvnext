@@ -67,23 +67,26 @@ function createTagAccessor(...tags: Tag[]): Accessor {
 }
 
 export const SORTS = [
-  "boost",
+  // "boost",
   "recency",
   "duration",
   "employment",
   "education",
   "society",
-  "engineering",
+  "coding",
+  "electronics",
   "invention",
   "management",
   "machine learning",
   "art",
   "design",
+  "sport",
+  "writing",
 ] as const;
 export type Sort = typeof SORTS[number];
 
 export const SORT_ACCESSORS: Record<Sort, Accessor> = {
-  boost: (entry) => entry.boost || 0,
+  // boost: (entry) => entry.boost || 0,
   recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative reverses order
   duration: (entry) =>
     entry.stop
@@ -92,12 +95,15 @@ export const SORT_ACCESSORS: Record<Sort, Accessor> = {
   employment: createTagAccessor("employment"),
   education: createTagAccessor("education"),
   society: createTagAccessor("society"),
-  engineering: createTagAccessor("coding", "electronics"),
+  coding: createTagAccessor("coding"),
+  electronics: createTagAccessor("electronics"),
   management: createTagAccessor("management"),
   "machine learning": createTagAccessor("machine learning"),
   invention: createTagAccessor("invention"),
   design: createTagAccessor("design"),
   art: createTagAccessor("art"),
+  sport: createTagAccessor("sport"),
+  writing: createTagAccessor("writing"),
 } as const;
 
 export const INITIAL_APPSTATE: Immutable<AppState> = {

@@ -1,9 +1,29 @@
-import { Paper, List, ListItem, Chip, FormLabel } from "@material-ui/core";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import HistoryIcon from "@material-ui/icons/History";
-import TimelapseIcon from "@material-ui/icons/Timelapse";
-import CategoryIcon from "@material-ui/icons/Category";
-import DragHandleOutlinedIcon from "@material-ui/icons/DragHandleOutlined";
+import {
+  Paper,
+  List,
+  ListItem,
+  Chip,
+  FormLabel,
+  Grid,
+} from "@material-ui/core";
+import {
+  Favorite,
+  History,
+  Timelapse,
+  Category,
+  DragHandleOutlined,
+  Work,
+  School,
+  Code,
+  Memory,
+  Bathtub,
+  People,
+  Settings,
+  Palette,
+  SportsHandball,
+  FormatQuote,
+  Language,
+} from "@material-ui/icons";
 import { Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { List as MovableList, arrayMove } from "react-movable";
@@ -32,11 +52,13 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
           <FormLabel component="label" color={"primary"}>
             Priority
           </FormLabel>
-          <List {...props}>{children}</List>
+          <Grid container direction={"column"} {...props}>
+            {children}
+          </Grid>
         </>
       )}
       renderItem={({ value, props }) => (
-        <ListItem {...props}>
+        <Grid item {...props}>
           <Chip
             disabled={disabled}
             label={value}
@@ -44,18 +66,41 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
             size={"small"}
             style={{ width: "100%" }}
             icon={
-              value === "boost" ? (
-                <FavoriteIcon />
-              ) : value === "recency" ? (
-                <HistoryIcon />
+              // value === "boost" ? (
+              //   <FavoriteIcon />
+              // ) :
+              value === "recency" ? (
+                <History />
               ) : value === "duration" ? (
-                <TimelapseIcon />
+                <Timelapse />
+              ) : value === "employment" ? (
+                <Work />
+              ) : value === "education" ? (
+                <School />
+              ) : value === "society" ? (
+                <Language />
+              ) : value === "coding" ? (
+                <Code />
+              ) : value === "electronics" ? (
+                <Memory />
+              ) : value === "invention" ? (
+                <Bathtub />
+              ) : value === "management" ? (
+                <People />
+              ) : value === "machine learning" ? (
+                <Settings />
+              ) : value === "art" ? (
+                <Palette />
+              ) : value === "design" ? (
+                <Category />
+              ) : value === "sport" ? (
+                <SportsHandball />
+              ) : value === "writing" ? (
+                <FormatQuote />
               ) : (
-                <DragHandleOutlinedIcon />
+                <DragHandleOutlined />
               )
-              // for employment WorkIcon
-              // for education SchoolIcon
-              // for society
+              // for society HomeWork
               // for code CodeIcon
               // for electronics MemoryIcon (BuildIcon, MouseIcon)
               // for invention Emoji (bulb), Bath
@@ -67,7 +112,7 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
               // for writing FormatQuote
             }
           />
-        </ListItem>
+        </Grid>
       )}
     />
   );
