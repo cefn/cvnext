@@ -74,6 +74,8 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
       "coding",
       "electronics",
       "invention",
+      "design",
+      "writing",
       "management",
       "facilitation",
       "python",
@@ -87,7 +89,14 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Contractor",
     title: "Self-employed Embedded Software Engineer",
-    tags: ["employment", "coding", "electronics", "facilitation", "invention"],
+    tags: [
+      "employment",
+      "coding",
+      "electronics",
+      "design",
+      "facilitation",
+      "invention",
+    ],
     start: new Date("2011-04-01"),
     stop: new Date("2018-08-01"),
     intro: "Bespoke rapid prototyping and integration of embedded electronics",
@@ -122,7 +131,13 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "BT PLC R&D",
     title: "Principal Researcher",
-    tags: ["employment", "coding"],
+    tags: [
+      "employment",
+      "coding",
+      "invention",
+      "management",
+      "machine learning",
+    ],
     start: new Date("2000-06-01"),
     stop: new Date("2011-03-01"),
     intro: "Technology researcher, strategist, programmer and inventor.",
@@ -174,7 +189,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "V&A Marketing Limited",
     title: "Business Development Manager",
-    tags: ["employment"],
+    tags: ["employment", "management"],
     start: new Date("1996-01-01"),
     stop: new Date("1999-08-01"),
     intro: "2nd full-time employee of fastest-growing company in Wales",
@@ -184,7 +199,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "MRes, Lancaster University",
     title: "Design for the Digital Economy",
-    tags: ["education", "coding", "design"],
+    tags: ["education", "coding", "design", "writing"],
     start: new Date("2011-09-01"),
     stop: new Date("2012-06-01"),
   },
@@ -244,7 +259,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Morecambe Mini Illuminations",
     title: "Convener and curator",
-    tags: ["society", "coding", "art", "electronics"],
+    tags: ["society", "coding", "art", "electronics", "writing"],
     start: new Date("2016-06-01"),
     stop: new Date("2019-11-01"),
     intro:
@@ -254,7 +269,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
   {
     org: "Curiosity Collective",
     title: "Member of interactive arts collective",
-    tags: ["society", "coding"],
+    tags: ["society", "art", "coding", "design"],
     start: new Date("2005-01-01"),
     stop: new Date("2012-04-01"),
     body: "Founder member of experimental cyberart group. Created interactive installations for five different shows touring Ipswich and throughout the UK, including the 'Human Kaleidoscope (video)', 'Semaphore to SMS' gateway (machine vision), 'Mime-driven handcar' (ultrasonics), 'Curiosity Killed the Cat' (microcontroller) 'Grass is always greener', (visual illusion) and many more.",
