@@ -1,5 +1,5 @@
-import { Immutable } from "@lauf/lauf-store";
-import { Entry } from "./types";
+import type { Immutable } from "@lauf/lauf-store";
+import type { Entry } from "./types";
 
 export const ADDRESS = `Cefn Hoile
 4 Gardner Road Heysham, Morecambe, LA3 1RX 

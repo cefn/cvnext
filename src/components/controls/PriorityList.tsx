@@ -20,7 +20,7 @@ import {
 import { Store } from "@lauf/lauf-store";
 import { useSelected } from "@lauf/lauf-store-react";
 import { List as MovableList, arrayMove } from "react-movable";
-import { AppState } from "../../types";
+import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
 
 export function PriorityList({ store }: { store: Store<AppState> }) {

@@ -10,6 +10,7 @@
     "sourceMap": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "target": "es2015",
