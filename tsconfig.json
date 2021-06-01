@@ -1,5 +1,8 @@
 {
-  "exclude": ["node_modules", "out"],
+  "exclude": [
+    "node_modules",
+    "out"
+  ],
   "compilerOptions": {
     "strict": true,
     "alwaysStrict": true,
@@ -14,14 +17,23 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "target": "es2015",
-    "lib": ["es6", "dom", "dom.iterable", "esnext"],
+    "lib": [
+      "es6",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
-    "jsx": "react",
+    "jsx": "preserve",
     "noEmit": false,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowJs": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

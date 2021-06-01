@@ -11,4 +11,9 @@ module.exports = {
   projects: ["<rootDir>"],
   coverageDirectory: "<rootDir>/coverage/",
   preset: "ts-jest",
+  globals: {
+    "ts-jest": {
+      tsconfig: "<rootDir>/tsconfig.test.json",
+    },
+  },
 };

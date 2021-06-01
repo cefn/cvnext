@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Button } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState } from "../../types";
+import type { AppState } from "../../types";
 import { downloadPdf } from "../../util";
 import { INITIAL_APPSTATE } from "../../logic";
 

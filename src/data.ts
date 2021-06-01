@@ -7,45 +7,6 @@ export const ADDRESS = `Cefn Hoile
 cefn@cefn.com
 https://cefn.com` as const;
 
-export const CATEGORIES = ["employment", "education", "society"] as const;
-
-export const DISCIPLINES = [
-  "design",
-  "invention",
-  "management",
-  "facilitation",
-  "electronics",
-  "machine learning",
-  "writing",
-  "making",
-  "architecting",
-  "coding",
-  "testing",
-  "devops",
-  "CI/CD",
-  "TDD",
-  "BDD",
-  "open source",
-  "open hardware",
-  "art",
-  "sport",
-  "community",
-] as const;
-
-export const TECHNOLOGIES = [
-  "typescript",
-  "javascript",
-  "node",
-  "python",
-  "couchdb",
-  "solr",
-  "aws",
-  "docker",
-  "jest",
-] as const;
-
-export const TAGS = [...CATEGORIES, ...DISCIPLINES, ...TECHNOLOGIES] as const;
-
 export const ALL_ENTRIES: Immutable<Entry[]> = [
   /** EMPLOYMENT */
   {

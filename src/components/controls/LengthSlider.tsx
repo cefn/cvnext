@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Store } from "@lauf/lauf-store";
 import { FormLabel, Paper, Slider, Grid } from "@material-ui/core";
-import { AppState } from "../../types";
+import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
 import { useSelected } from "@lauf/lauf-store-react";
 

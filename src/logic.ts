@@ -1,7 +1,6 @@
 import { Immutable, Store, Watcher } from "@lauf/lauf-store";
 import { ALL_ENTRIES } from "./data";
-import { SCORENAMES } from "./score";
-import { AppState, Entry, ScoreName } from "./types";
+import { AppState, Entry, ScoreName, SCORENAMES } from "./types";
 import { sortEntries } from "./util";
 
 export const INITIAL_APPSTATE: Immutable<AppState> = {

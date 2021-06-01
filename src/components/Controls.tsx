@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Grid, Paper } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState } from "../types";
+import type { AppState } from "../types";
 import { DetailRadio } from "./controls/DetailRadio";
 import { LengthSlider } from "./controls/LengthSlider";
 import { PriorityList } from "./controls/PriorityList";
