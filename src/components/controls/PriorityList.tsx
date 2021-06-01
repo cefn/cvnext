@@ -30,13 +30,14 @@ export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
   return (
     <MovableList
       values={[...scorePriority]}
-      onChange={({ oldIndex, newIndex }) => store.edit(
-        draft => void (draft.scorePriority = arrayMove(
-          draft.scorePriority,
-          oldIndex,
-          newIndex
-        ))
-      )}
+      onChange={({ oldIndex, newIndex }) =>
+        store.edit(draft => {
+          draft.scorePriority = arrayMove(
+            draft.scorePriority,
+            oldIndex,
+            newIndex
+          )
+        })}
       renderList={({ children, props }) => (
         <>
           <FormLabel component='label' color='primary'>

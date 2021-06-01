@@ -20,9 +20,10 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
         aria-label='Detail'
         name='detail'
         value={detail}
-        onChange={event => store.edit(
-          draft => void (draft.detail = event.target.value as Detail)
-        )}
+        onChange={event =>
+          store.edit(draft => {
+            draft.detail = event.target.value as Detail
+          })}
       >
         {Object.keys(DETAILS).map(detailKey => (
           <FormControlLabel

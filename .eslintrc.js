@@ -1,9 +1,9 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: ["./tsconfig.json"],
-  },
+  // parserOptions: {
+  //   project: ["./tsconfig.json"],
+  // },
   plugins: [
     "@typescript-eslint",
     "eslint-plugin-jest",
@@ -15,6 +15,7 @@ module.exports = {
     //TODO invest the time to meet airbnb linting standards
     //"eslint-config-airbnb-typescript"
     "eslint-config-standard-typescript",
+    "eslint-config-prettier",
   ],
   env: {
     node: true,

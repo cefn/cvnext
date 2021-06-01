@@ -1,13 +1,9 @@
 import React, { FC } from 'react'
 import { Immutable, Store } from '@lauf/lauf-store'
 import { useSelected } from '@lauf/lauf-store-react'
-import {
-  Document, Page, Text, View, Font
-} from '@react-pdf/renderer'
+import { Document, Page, Text, View, Font } from '@react-pdf/renderer'
 import dayjs from 'dayjs'
-import {
-  Category, Entry, AppState, CATEGORIES, DETAILS
-} from '../types'
+import { Category, Entry, AppState, CATEGORIES, DETAILS } from '../types'
 import { ADDRESS } from '../data'
 import { sortEntries } from '../util'
 
@@ -21,7 +17,7 @@ export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => (
   <LayoutA4>
     <Address>{ADDRESS}</Address>
     {CATEGORIES.map(category => (
-      <CategorySection {...{ store, category, key: category }} />
+      <CategorySection key={category} {...{ store, category }} />
     ))}
   </LayoutA4>
 )
@@ -59,7 +55,9 @@ const CategorySection: FC<{
   category: Category
 }> = ({ store, category }) => {
   const priorityEntries = useSelected(store, state => state.priorityEntries)
-  const categoryEntries = priorityEntries.filter(entry => entry.tags.includes(category))
+  const categoryEntries = priorityEntries.filter(entry =>
+    entry.tags.includes(category)
+  )
   const sortedEntries = sortEntries(categoryEntries, ['recency'])
   const [firstItem, ...remainingItems] = sortedEntries.map((entry, key) => (
     <EntrySection key={key} {...{ store, entry }} />
@@ -118,9 +116,7 @@ const Heading: TextHolder = ({ children }) => (
 
 const EntrySection: FC<{ store: Store<AppState>, entry: Immutable<Entry> }> = ({
   store,
-  entry: {
-    org, title, start, stop, intro, body
-  }
+  entry: { org, title, start, stop, intro, body }
 }) => {
   const detail = useSelected(store, store => store.detail)
 
@@ -183,8 +179,7 @@ const EntrySection: FC<{ store: Store<AppState>, entry: Immutable<Entry> }> = ({
               </View>
               {fieldVisible('intro', 'body') && (
                 <Text>
-                  {fieldVisible('intro') && intro}
-                  {' '}
+                  {fieldVisible('intro') && intro}{' '}
                   {fieldVisible('body') && body}
                 </Text>
               )}

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .ts,.tsx",
     "check": "tsc --noEmit",
     "circularity": "madge --circular --extensions ts,tsx ./src"
   },
@@ -36,6 +36,7 @@
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.27.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard-typescript": "^1.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jest": "^24.3.6",
