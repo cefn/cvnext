@@ -1,4 +1,4 @@
-import { Immutable, Store, Watcher } from "@lauf/lauf-store";
+import { Immutable, Store, Unwatch, Watcher } from "@lauf/lauf-store";
 import { ALL_ENTRIES } from "./data";
 import { AppState, Entry, ScoreName, SCORENAMES } from "./types";
 import { sortEntries } from "./util";
@@ -10,7 +10,7 @@ export const INITIAL_APPSTATE: Immutable<AppState> = {
   priorityEntries: sortEntries(ALL_ENTRIES, SCORENAMES),
 } as const;
 
-export function ensurePriorityEntries(store: Store<AppState>) {
+export function ensurePriorityEntries(store: Store<AppState>): Unwatch {
   let lastLimit = -1;
   let lastSortOrder: ReadonlyArray<ScoreName> = [];
   const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
@@ -29,5 +29,5 @@ export function ensurePriorityEntries(store: Store<AppState>) {
     }
   };
   limitWatcher(store.read());
-  store.watch(limitWatcher);
+  return store.watch(limitWatcher);
 }

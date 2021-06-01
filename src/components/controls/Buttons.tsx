@@ -30,7 +30,7 @@ export const ResetButton: FC<{ store: Store<AppState> }> = ({ store }) => (
   </Button>
 );
 
-export const SourceButton = () => (
+export const SourceButton: FC = () => (
   <Button {...BUTTON_DEFAULTS} href="https://github.com/cefn/cvnext">
     About
   </Button>

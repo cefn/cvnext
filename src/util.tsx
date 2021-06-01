@@ -15,7 +15,7 @@ import { Resume } from "./components";
 
 export const LAUNCH_TIME = new Date().getTime();
 
-export async function downloadPdf(store: Store<AppState>) {
+export async function downloadPdf(store: Store<AppState>): Promise<void> {
   const blob = await pdf(<Resume store={store} />).toBlob();
   saveAs(blob, "CV - Cefn Hoile.pdf");
 }
@@ -34,7 +34,7 @@ export function getCategory(entry: Immutable<Entry>): Category | null {
 export function sortEntries(
   entries: Immutable<Entry[]>,
   scorePriority: Immutable<ScoreName[]>
-) {
+): Immutable<Entry>[] {
   const sortedEntries: Immutable<Entry>[] = [...entries];
   sortedEntries.sort((a: Immutable<Entry>, b: Immutable<Entry>) => {
     for (const sort of scorePriority) {

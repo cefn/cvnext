@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Chip, FormLabel, Grid } from "@material-ui/core";
 import {
   History,
@@ -23,7 +23,7 @@ import { List as MovableList, arrayMove } from "react-movable";
 import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
 
-export function PriorityList({ store }: { store: Store<AppState> }) {
+export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
   const scorePriority = useSelected(store, (state) => state.scorePriority);
   const limit = useSelected(store, (state) => state.limit);
   const disabled = limit === ALL_ENTRIES.length;
@@ -99,7 +99,7 @@ export function PriorityList({ store }: { store: Store<AppState> }) {
       )}
     />
   );
-}
+};
 
 // for society HomeWork, Language
 // for code CodeIcon
