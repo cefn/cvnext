@@ -1,8 +1,20 @@
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
-  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  parserOptions: {
+    project: "./tsconfig.json",
+  },
+  plugins: [
+    "@typescript-eslint",
+    "eslint-plugin-jest",
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-prettier",
+  ],
+  extends: ["eslint-config-airbnb-typescript"],
+  rules: {
+    "prettier/prettier": "error",
+  },
   env: {
     node: true,
   },
