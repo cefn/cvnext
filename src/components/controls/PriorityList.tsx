@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Chip, FormLabel, Grid } from "@material-ui/core";
+import React, { FC } from 'react'
+import { Chip, FormLabel, Grid } from '@material-ui/core'
 import {
   History,
   Timelapse,
@@ -15,37 +15,34 @@ import {
   Palette,
   SportsHandball,
   FormatQuote,
-  Language,
-} from "@material-ui/icons";
-import { Store } from "@lauf/lauf-store";
-import { useSelected } from "@lauf/lauf-store-react";
-import { List as MovableList, arrayMove } from "react-movable";
-import type { AppState } from "../../types";
-import { ALL_ENTRIES } from "../../data";
+  Language
+} from '@material-ui/icons'
+import { Store } from '@lauf/lauf-store'
+import { useSelected } from '@lauf/lauf-store-react'
+import { List as MovableList, arrayMove } from 'react-movable'
+import type { AppState } from '../../types'
+import { ALL_ENTRIES } from '../../data'
 
 export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
-  const scorePriority = useSelected(store, (state) => state.scorePriority);
-  const limit = useSelected(store, (state) => state.limit);
-  const disabled = limit === ALL_ENTRIES.length;
+  const scorePriority = useSelected(store, state => state.scorePriority)
+  const limit = useSelected(store, state => state.limit)
+  const disabled = limit === ALL_ENTRIES.length
   return (
     <MovableList
       values={[...scorePriority]}
-      onChange={({ oldIndex, newIndex }) =>
-        store.edit(
-          (draft) =>
-            void (draft.scorePriority = arrayMove(
-              draft.scorePriority,
-              oldIndex,
-              newIndex
-            ))
-        )
-      }
+      onChange={({ oldIndex, newIndex }) => store.edit(
+        draft => void (draft.scorePriority = arrayMove(
+          draft.scorePriority,
+          oldIndex,
+          newIndex
+        ))
+      )}
       renderList={({ children, props }) => (
         <>
-          <FormLabel component="label" color="primary">
+          <FormLabel component='label' color='primary'>
             Priority
           </FormLabel>
-          <Grid container direction="column" {...props}>
+          <Grid container direction='column' {...props}>
             {children}
           </Grid>
         </>
@@ -55,40 +52,40 @@ export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
           <Chip
             disabled={disabled}
             label={value}
-            color={disabled ? "default" : "primary"}
-            size="small"
-            style={{ width: "100%" }}
+            color={disabled ? 'default' : 'primary'}
+            size='small'
+            style={{ width: '100%' }}
             icon={
               // value === "boost" ? (
               //   <FavoriteIcon />
               // ) :
-              value === "recency" ? (
+              value === 'recency' ? (
                 <History />
-              ) : value === "duration" ? (
+              ) : value === 'duration' ? (
                 <Timelapse />
-              ) : value === "employment" ? (
+              ) : value === 'employment' ? (
                 <Work />
-              ) : value === "education" ? (
+              ) : value === 'education' ? (
                 <School />
-              ) : value === "society" ? (
+              ) : value === 'society' ? (
                 <Language />
-              ) : value === "coding" ? (
+              ) : value === 'coding' ? (
                 <Code />
-              ) : value === "electronics" ? (
+              ) : value === 'electronics' ? (
                 <Memory />
-              ) : value === "invention" ? (
+              ) : value === 'invention' ? (
                 <Bathtub />
-              ) : value === "management" ? (
+              ) : value === 'management' ? (
                 <People />
-              ) : value === "machine learning" ? (
+              ) : value === 'machine learning' ? (
                 <Settings />
-              ) : value === "art" ? (
+              ) : value === 'art' ? (
                 <Palette />
-              ) : value === "design" ? (
+              ) : value === 'design' ? (
                 <Category />
-              ) : value === "sport" ? (
+              ) : value === 'sport' ? (
                 <SportsHandball />
-              ) : value === "writing" ? (
+              ) : value === 'writing' ? (
                 <FormatQuote />
               ) : (
                 <DragHandleOutlined />
@@ -98,8 +95,8 @@ export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
         </Grid>
       )}
     />
-  );
-};
+  )
+}
 
 // for society HomeWork, Language
 // for code CodeIcon

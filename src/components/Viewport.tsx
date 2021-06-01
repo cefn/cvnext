@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
 export const Viewport: FC = ({ children }) => (
   <>
@@ -13,4 +13,4 @@ export const Viewport: FC = ({ children }) => (
     </style>
     {children}
   </>
-);
+)
