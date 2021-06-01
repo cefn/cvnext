@@ -63,7 +63,7 @@ export function createTagsScorer(...tags: Tag[]): Scorer {
 
 export const SCORERS: Record<ScoreName, Scorer> = {
   // boost: (entry) => entry.boost || 0,
-  recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), //Negative reverses order
+  recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), // Negative reverses order
   duration: (entry) =>
     entry.stop
       ? entry.stop.getTime() - entry.start.getTime()

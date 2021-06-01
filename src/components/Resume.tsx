@@ -13,16 +13,14 @@ function formatDate(date: Date): string {
 
 type TextHolder = FC<{ children: string }>;
 
-export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => {
-  return (
-    <LayoutA4>
-      <Address>{ADDRESS}</Address>
-      {CATEGORIES.map((category) => (
-        <CategorySection {...{ store, category, key: category }} />
-      ))}
-    </LayoutA4>
-  );
-};
+export const Resume: FC<{ store: Store<AppState> }> = ({ store }) => (
+  <LayoutA4>
+    <Address>{ADDRESS}</Address>
+    {CATEGORIES.map((category) => (
+      <CategorySection {...{ store, category, key: category }} />
+    ))}
+  </LayoutA4>
+);
 
 const LayoutA4: FC = ({ children }) => (
   <Document>
@@ -45,7 +43,7 @@ const Address: TextHolder = ({ children }) => {
   return (
     <Section>
       <Text style={{ textAlign: "center" }}>
-        <Spaced>{name + "\n"}</Spaced>
+        <Spaced>{`${name}\n`}</Spaced>
         {lines.join("\n")}
       </Text>
     </Section>
@@ -135,9 +133,11 @@ const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
 
   const dateElement = (
     <View style={{ flexDirection: "column", color: "grey" }}>
-      <Text>{`${formatDate(start as Date)}-${
-        stop ? formatDate(stop as Date) : "Ongoing"
-      }`}</Text>
+      <Text>
+        {`${formatDate(start as Date)}-${
+          stop ? formatDate(stop as Date) : "Ongoing"
+        }`}
+      </Text>
     </View>
   );
 
@@ -159,7 +159,7 @@ const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
                 </Text>
               </View>
             )}
-            {/* detail:"None" (no subtitle included) date aligns with title*/}
+            {/* detail:"None" (no subtitle included) date aligns with title */}
             {!fieldVisible("title") && dateElement}
           </View>
           {fieldVisible("title", "intro", "body") && (
@@ -174,7 +174,7 @@ const EntrySection: FC<{ store: Store<AppState>; entry: Immutable<Entry> }> = ({
                 <View style={{ flexDirection: "column", textAlign: "left" }}>
                   <Text style={{ fontStyle: "italic" }}>{title}</Text>
                 </View>
-                {/* detail:"Some" (subtitle included) date aligns with subtitle*/}
+                {/* detail:"Some" (subtitle included) date aligns with subtitle */}
                 {fieldVisible("title") && dateElement}
               </View>
               {fieldVisible("intro", "body") && (

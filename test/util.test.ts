@@ -29,20 +29,20 @@ describe("sortEntries: individual field order of default SORTS", () => {
 
   test("Entries with ascending recency are sorted to descending", () => {
     const entries: Immutable<Entry[]> = [
-      { ...createEntry(0), stop: new Date(`2000-12-01`) },
-      { ...createEntry(1), stop: new Date(`2001-12-01`) },
-      { ...createEntry(2), stop: new Date(`2002-12-01`) },
+      { ...createEntry(0), stop: new Date("2000-12-01") },
+      { ...createEntry(1), stop: new Date("2001-12-01") },
+      { ...createEntry(2), stop: new Date("2002-12-01") },
     ];
     const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
   });
 
   test("Entries with fixed recency, ascending duration are sorted to descending", () => {
-    const stop = new Date(`2002-12-01`);
+    const stop = new Date("2002-12-01");
     const entries: Immutable<Entry[]> = [
-      { ...createEntry(0), start: new Date(`2002-01-01`), stop }, //1 years
-      { ...createEntry(1), start: new Date(`2001-01-01`), stop }, //2 years
-      { ...createEntry(2), start: new Date(`2000-01-01`), stop }, //3 years
+      { ...createEntry(0), start: new Date("2002-01-01"), stop }, // 1 years
+      { ...createEntry(1), start: new Date("2001-01-01"), stop }, // 2 years
+      { ...createEntry(2), start: new Date("2000-01-01"), stop }, // 3 years
     ];
     const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
@@ -62,9 +62,9 @@ describe("sortEntries: individual field order of default SORTS", () => {
 describe("sortEntries: relative priority of fields of default SORTS", () => {
   test("boost dominates recency", () => {
     const entries: Immutable<Entry[]> = [
-      { ...createEntry(0), boost: 0, stop: new Date(`2002-12-01`) },
-      { ...createEntry(1), boost: 1, stop: new Date(`2001-12-01`) },
-      { ...createEntry(2), boost: 2, stop: new Date(`2000-12-01`) },
+      { ...createEntry(0), boost: 0, stop: new Date("2002-12-01") },
+      { ...createEntry(1), boost: 1, stop: new Date("2001-12-01") },
+      { ...createEntry(2), boost: 2, stop: new Date("2000-12-01") },
     ];
     const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());
@@ -74,18 +74,18 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
     const entries: Immutable<Entry[]> = [
       {
         ...createEntry(0),
-        start: new Date(`1998-01-01`),
-        stop: new Date(`2000-12-31`),
+        start: new Date("1998-01-01"),
+        stop: new Date("2000-12-31"),
       }, // duration 3 years
       {
         ...createEntry(1),
-        start: new Date(`2000-01-01`),
-        stop: new Date(`2001-12-31`),
+        start: new Date("2000-01-01"),
+        stop: new Date("2001-12-31"),
       }, // duration 2 years
       {
         ...createEntry(2),
-        start: new Date(`2002-01-01`),
-        stop: new Date(`2002-12-31`),
+        start: new Date("2002-01-01"),
+        stop: new Date("2002-12-31"),
       }, // duration 1 years
     ];
     const sortedEntries = sortEntries(entries, SCORENAMES);
@@ -93,26 +93,26 @@ describe("sortEntries: relative priority of fields of default SORTS", () => {
   });
 
   test("duration dominates category", () => {
-    const stop = new Date(`2002-12-01`);
+    const stop = new Date("2002-12-01");
     const entries: Immutable<Entry[]> = [
       {
         ...createEntry(0),
-        start: new Date(`2002-01-01`),
+        start: new Date("2002-01-01"),
         stop,
         tags: ["employment"],
-      }, //1 years
+      }, // 1 years
       {
         ...createEntry(1),
-        start: new Date(`2001-01-01`),
+        start: new Date("2001-01-01"),
         stop,
         tags: ["education"],
-      }, //2 years
+      }, // 2 years
       {
         ...createEntry(2),
-        start: new Date(`2000-01-01`),
+        start: new Date("2000-01-01"),
         stop,
         tags: ["society"],
-      }, //3 years
+      }, // 3 years
     ];
     const sortedEntries = sortEntries(entries, SCORENAMES);
     expect(sortedEntries).toEqual([...entries].reverse());

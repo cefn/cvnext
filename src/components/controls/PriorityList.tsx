@@ -42,10 +42,10 @@ export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
       }
       renderList={({ children, props }) => (
         <>
-          <FormLabel component="label" color={"primary"}>
+          <FormLabel component="label" color="primary">
             Priority
           </FormLabel>
-          <Grid container direction={"column"} {...props}>
+          <Grid container direction="column" {...props}>
             {children}
           </Grid>
         </>
@@ -56,7 +56,7 @@ export const PriorityList: FC<{ store: Store<AppState> }> = ({ store }) => {
             disabled={disabled}
             label={value}
             color={disabled ? "default" : "primary"}
-            size={"small"}
+            size="small"
             style={{ width: "100%" }}
             icon={
               // value === "boost" ? (

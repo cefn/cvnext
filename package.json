@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "check": "tsc --noEmit",
     "circularity": "madge --circular --extensions ts,tsx ./src"
   },

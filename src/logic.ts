@@ -23,7 +23,7 @@ export function ensurePriorityEntries(store: Store<AppState>): Unwatch {
         const priorityEntries = sortEntries(ALL_ENTRIES, scorePriority).slice(
           0,
           limit
-        ) as Entry[]; //draft can't be immutable
+        ) as Entry[]; // draft can't be immutable
         draft.priorityEntries = priorityEntries;
       });
     }

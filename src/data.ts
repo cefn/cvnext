@@ -69,7 +69,8 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     tags: ["employment", "coding", "design", "facilitation"],
     start: new Date("2015-06-01"),
     stop: new Date("2017-01-01"),
-    intro: `Designed and deployed real-time digital facilitation tool for high-profile design workshops. `,
+    intro:
+      "Designed and deployed real-time digital facilitation tool for high-profile design workshops. ",
     body: "System guided delegates on iPads through brainstorming process, auto-generating 'keynotes' for design workshops. Developed Utopiary MQTT synchronization system. Docker, Node, JQuery, MQTT, RethinkDB.",
   },
   {
@@ -154,7 +155,7 @@ export const ALL_ENTRIES: Immutable<Entry[]> = [
     start: new Date("1996-01-01"),
     stop: new Date("1999-08-01"),
     intro: "2nd full-time employee of fastest-growing company in Wales",
-    body: `Ran sales, advertising of £500,000 construction order book. Specified and installed intranet, email, external website. Designed, implemented ISO9002, CDM and COSHH-compliance. Joined company as 2nd full-time employee, 3 yrs later had grown to 70 employees.`,
+    body: "Ran sales, advertising of £500,000 construction order book. Specified and installed intranet, email, external website. Designed, implemented ISO9002, CDM and COSHH-compliance. Joined company as 2nd full-time employee, 3 yrs later had grown to 70 employees.",
   },
   /** EDUCATION */
   {

@@ -15,7 +15,7 @@ export const Controls: FC<{ store: Store<AppState> }> = ({ store }) => (
           <DetailRadio store={store} />
         </Grid>
         <Grid item xs={6}>
-          <Grid container direction={"column"} spacing={3}>
+          <Grid container direction="column" spacing={3}>
             <DownloadButton store={store} />
             <SourceButton />
             <ResetButton store={store} />

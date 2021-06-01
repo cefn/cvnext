@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { Store } from "@lauf/lauf-store";
 import { FormLabel, Slider, Grid } from "@material-ui/core";
+import { useSelected } from "@lauf/lauf-store-react";
 import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
-import { useSelected } from "@lauf/lauf-store-react";
 
 /**
  * Mapping natural direction for document length measure (increasing length downwards)
@@ -26,18 +26,14 @@ export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => {
     <>
       <Grid container style={{ height: "100%" }}>
         <Grid item xs={12}>
-          <FormLabel
-            component="label"
-            id="length-slider-label"
-            color={"primary"}
-          >
+          <FormLabel component="label" id="length-slider-label" color="primary">
             Items
           </FormLabel>
         </Grid>
         <Grid item xs={12} style={{ height: "80%" }}>
           <Slider
             style={{ height: "100%" }}
-            orientation={"vertical"}
+            orientation="vertical"
             value={sliderPos(limit)}
             min={sliderPos(ALL_ENTRIES.length)}
             max={sliderPos(0)}

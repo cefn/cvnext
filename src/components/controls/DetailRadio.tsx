@@ -6,14 +6,14 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState, Detail, DETAILS } from "../../types";
 import { useSelected } from "@lauf/lauf-store-react";
+import { AppState, Detail, DETAILS } from "../../types";
 
 export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
   const detail = useSelected(store, (state) => state.detail);
   return (
     <>
-      <FormLabel component="label" color={"primary"}>
+      <FormLabel component="label" color="primary">
         Detail
       </FormLabel>
       <RadioGroup
@@ -30,7 +30,7 @@ export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {
           <FormControlLabel
             key={detailKey}
             value={detailKey}
-            control={<Radio color={"primary"} size={"small"} />}
+            control={<Radio color="primary" size="small" />}
             label={detailKey}
           />
         ))}
