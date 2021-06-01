@@ -4,6 +4,8 @@ node_modules
 dist
 # don't lint nyc coverage output
 coverage
+# Ignore next cache
+.next
 # Ignore next-defined Typescript typings
 next-env.d.ts
 react-app-env.d.ts

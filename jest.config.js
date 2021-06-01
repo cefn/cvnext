@@ -1,12 +1,14 @@
+// Configured with reference to https://github.com/vercel/next.js/tree/canary/examples/with-typescript-eslint-jest
 module.exports = {
-  preset: "ts-jest",
-  globals: {
-    "ts-jest": {
-      tsconfig: "<rootDir>/tsconfig.jest.json",
-    },
-  },
+  roots: ["<rootDir>"],
+  moduleFileExtensions: ["ts", "tsx", "js", "json", "jsx"],
+  testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
+  transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$"],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.(ts|tsx)$": "babel-jest",
   },
-  testEnvironment: "node",
+  moduleNameMapper: {
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
+  },
 };
