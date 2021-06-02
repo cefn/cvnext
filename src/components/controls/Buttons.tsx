@@ -7,7 +7,8 @@ import { INITIAL_APPSTATE } from "../../logic";
 
 const BUTTON_DEFAULTS = {
   variant: "contained",
-  color: "primary"
+  color: "primary",
+  style: { width: "80%" }
 } as const;
 
 export const DownloadButton: FC<{ store: Store<AppState> }> = ({ store }) => (
@@ -24,8 +25,8 @@ export const ResetButton: FC<{ store: Store<AppState> }> = ({ store }) => (
   </Button>
 );
 
-export const SourceButton: FC = () => (
-  <Button {...BUTTON_DEFAULTS} href="https://github.com/cefn/cvnext">
-    About
+export const LinkButton: FC<{ href: string }> = ({ href, children }) => (
+  <Button {...BUTTON_DEFAULTS} href={href}>
+    {children}
   </Button>
 );
