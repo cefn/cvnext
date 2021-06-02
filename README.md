@@ -6,13 +6,13 @@ Visitors are invited to select a summarisation level, preferred document length 
 
 The resulting PDF can be previewed dynamically in the page and optionally downloaded.
 
-To experiment, please use the Chrome browser. A snapshot of the SPA is published at https://cefn.com/cv
+To experiment, please use a desktop Chrome browser. A snapshot of the SPA is published at https://cefn.com/cv
 
 A standard PDF CV without filtering or summarisation is available at https://cefn.com/blog/files/cv.pdf
 
 The project is written in Typescript using NextJS, React and my own state-management solution [@lauf/lauf-store](https://www.npmjs.com/package/@lauf/lauf-store). It is published as a static, purely-client-side Single Page Application.
 
-Multi-platform support, decent media queries, breakpoints or fully responsive controls to target e.g. Mobile, Tablet is unlikely and not worth it for this experimental testing ground.
+Multi-platform support (any non-Chrome, non-Firefox or mobile browsers) is unlikely and not worth it for this experimental testing ground.
 
 ## Reference commands
 
