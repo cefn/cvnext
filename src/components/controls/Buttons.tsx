@@ -1,26 +1,21 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { Button } from "@material-ui/core";
 import { Store } from "@lauf/lauf-store";
-import { AppState } from "../../types";
+import type { AppState } from "../../types";
 import { downloadPdf } from "../../util";
 import { INITIAL_APPSTATE } from "../../logic";
 
 const BUTTON_DEFAULTS = {
   variant: "contained",
   color: "primary",
+  style: { width: "80%" }
 } as const;
 
 export const DownloadButton: FC<{ store: Store<AppState> }> = ({ store }) => (
   <>
-    {process.browser && (
-      <Button
-        suppressHydrationWarning
-        {...BUTTON_DEFAULTS}
-        onClick={() => downloadPdf(store)}
-      >
-        Download
-      </Button>
-    )}
+    <Button {...BUTTON_DEFAULTS} onClick={() => downloadPdf(store)}>
+      Download
+    </Button>
   </>
 );
 
@@ -30,8 +25,8 @@ export const ResetButton: FC<{ store: Store<AppState> }> = ({ store }) => (
   </Button>
 );
 
-export const SourceButton = () => (
-  <Button {...BUTTON_DEFAULTS} href="https://github.com/cefn/cvnext">
-    About
+export const LinkButton: FC<{ href: string }> = ({ href, children }) => (
+  <Button {...BUTTON_DEFAULTS} href={href}>
+    {children}
   </Button>
 );

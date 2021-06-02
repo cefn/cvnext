@@ -1,15 +1,20 @@
-module.exports = () => {
-  return {
-    webpack(config) {
-      config.module.rules.push({
-        test: /\.tsx?$/,
-        loader: "ts-loader",
-      });
-      return config;
-    },
-    future: {
-      webpack5: true,
-    },
-    assetPrefix: "./",
-  };
+module.exports = {
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "require-corp",
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin",
+          },
+        ],
+      },
+    ];
+  },
+  assetPrefix: "./",
 };
