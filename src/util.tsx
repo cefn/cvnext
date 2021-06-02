@@ -6,6 +6,19 @@ import { pdf } from "@react-pdf/renderer";
 import { Resume } from "./components";
 
 const LAUNCH_TIME = new Date().getTime();
+
+/** Scorer ensuring Entries dominate if they contain specific tags */
+export function createTagsScorer(...tags: Tag[]): Scorer {
+  return (entry) => {
+    for (const tag of tags) {
+      if (entry.tags.includes(tag)) {
+        return 1;
+      }
+    }
+    return 0;
+  };
+}
+
 const SCORERS: Record<ScoreName, Scorer> = {
   // boost: (entry) => entry.boost || 0,
   recency: (entry) => -(entry.stop ? LAUNCH_TIME - entry.stop.getTime() : 0), // Negative reverses order
@@ -26,18 +39,6 @@ const SCORERS: Record<ScoreName, Scorer> = {
   sport: createTagsScorer("sport"),
   writing: createTagsScorer("writing")
 } as const;
-
-/** Scorer ensuring Entries dominate if they contain specific tags */
-export function createTagsScorer(...tags: Tag[]): Scorer {
-  return (entry) => {
-    for (const tag of tags) {
-      if (entry.tags.includes(tag)) {
-        return 1;
-      }
-    }
-    return 0;
-  };
-}
 
 export function sortEntries(
   entries: Immutable<Entry[]>,
