@@ -5,28 +5,30 @@ import type { AppState } from "../../types";
 import { downloadPdf } from "../../util";
 import { INITIAL_APPSTATE } from "../../logic";
 
-const BUTTON_DEFAULTS = {
-  variant: "contained",
-  color: "primary",
-  style: { width: "80%" }
-} as const;
-
-export const DownloadButton: FC<{ store: Store<AppState> }> = ({ store }) => (
-  <>
-    <Button {...BUTTON_DEFAULTS} onClick={() => downloadPdf(store)}>
-      Download
-    </Button>
-  </>
+export const DownloadButton: FC<{ store: Store<AppState> }> = ({
+  store,
+  ...props
+}) => (
+  <Button onClick={() => downloadPdf(store)} {...props}>
+    Download
+  </Button>
 );
 
-export const ResetButton: FC<{ store: Store<AppState> }> = ({ store }) => (
-  <Button {...BUTTON_DEFAULTS} onClick={() => store.write(INITIAL_APPSTATE)}>
+export const ResetButton: FC<{ store: Store<AppState> }> = ({
+  store,
+  ...props
+}) => (
+  <Button onClick={() => store.write(INITIAL_APPSTATE)} {...props}>
     Reset
   </Button>
 );
 
-export const LinkButton: FC<{ href: string }> = ({ href, children }) => (
-  <Button {...BUTTON_DEFAULTS} href={href}>
+export const LinkButton: FC<{ href: string }> = ({
+  href,
+  children,
+  ...props
+}) => (
+  <Button href={href} {...props}>
     {children}
   </Button>
 );

@@ -5,13 +5,17 @@ import {
   Slider,
   Grid,
   useMediaQuery,
-  Theme
+  Theme,
+  Typography
 } from "@material-ui/core";
 import { useSelected } from "@lauf/lauf-store-react";
 import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
 
-export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => {
+export const LengthSlider: FC<{ store: Store<AppState> }> = ({
+  store,
+  ...props
+}) => {
   const limit = useSelected(store, (state) => state.limit);
   const orientation = useMediaQuery<Theme>((theme) =>
     theme.breakpoints.up("sm")
@@ -42,11 +46,12 @@ export const LengthSlider: FC<{ store: Store<AppState> }> = ({ store }) => {
 
   return (
     <>
-      <Grid container style={{ height: "100%" }}>
+      <Grid container style={{ height: "100%" }} {...props}>
         <Grid item xs={12}>
           <FormLabel component="label" id="length-slider-label" color="primary">
-            Items
+            Number of Items
           </FormLabel>
+          <Typography variant="body2">(limit by priority)</Typography>
         </Grid>
         <Grid item xs={12} style={{ height: "80%" }}>
           <Slider

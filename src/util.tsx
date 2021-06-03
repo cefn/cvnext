@@ -30,14 +30,14 @@ const SCORERS: Record<ScoreName, Scorer> = {
   education: createTagsScorer("education"),
   society: createTagsScorer("society"),
   coding: createTagsScorer("coding"),
-  electronics: createTagsScorer("electronics"),
-  management: createTagsScorer("management"),
-  "machine learning": createTagsScorer("machine learning"),
   invention: createTagsScorer("invention"),
+  management: createTagsScorer("management"),
+  writing: createTagsScorer("writing"),
+  "machine learning": createTagsScorer("machine learning"),
+  electronics: createTagsScorer("electronics"),
   design: createTagsScorer("design"),
   art: createTagsScorer("art"),
-  sport: createTagsScorer("sport"),
-  writing: createTagsScorer("writing")
+  sport: createTagsScorer("sport")
 } as const;
 
 export function sortEntries(
