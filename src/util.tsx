@@ -1,9 +1,5 @@
-import type { Immutable, Store } from "@lauf/lauf-store";
-import type { AppState, Entry, ScoreName, Scorer, Tag } from "./types";
-import React from "react";
-import { saveAs } from "file-saver";
-import { pdf } from "@react-pdf/renderer";
-import { Resume } from "./components";
+import type { Immutable } from "@lauf/lauf-store";
+import type { Entry, ScoreName, Scorer, Tag } from "./types";
 
 const LAUNCH_TIME = new Date().getTime();
 
@@ -56,9 +52,4 @@ export function sortEntries(
     return 0;
   });
   return sortedEntries;
-}
-
-export async function downloadPdf(store: Store<AppState>): Promise<void> {
-  const blob = await pdf(<Resume store={store} />).toBlob();
-  saveAs(blob, "CV - Cefn Hoile.pdf");
 }
