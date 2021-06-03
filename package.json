@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx",
     "check": "tsc --noEmit",
-    "circularity": "madge --circular --extensions ts,tsx ./src"
+    "circularity": "npx madge --circular --ts-config tsconfig.json   --extensions ts,tsx ./"
   },
   "dependencies": {
     "@lauf/lauf-store": "^0.1.0-beta.8",
