@@ -14,7 +14,6 @@ export function ensurePriorityEntries(store: Store<AppState>): Unwatch {
   let lastLimit = -1;
   let lastSortOrder: readonly ScoreName[] = [];
   const limitWatcher: Watcher<Immutable<AppState>> = (state) => {
-    console.log(state);
     const { limit, scorePriority } = state;
     if (limit !== lastLimit || scorePriority !== lastSortOrder) {
       lastLimit = limit;
