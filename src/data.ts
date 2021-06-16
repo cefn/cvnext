@@ -1,4 +1,4 @@
-import type { Immutable } from "@lauf/lauf-store";
+import type { Immutable } from "@lauf/store";
 import type { Entry } from "./types";
 
 export const ADDRESS = `Cefn Hoile

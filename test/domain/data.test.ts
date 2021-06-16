@@ -1,4 +1,4 @@
-import { Immutable } from "@lauf/lauf-store";
+import { Immutable } from "@lauf/store";
 import { ALL_ENTRIES } from "../../src/data";
 import { CATEGORIES, Category, Entry } from "../../src/types";
 

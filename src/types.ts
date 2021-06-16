@@ -1,4 +1,4 @@
-import { Immutable } from "@lauf/lauf-store";
+import { Immutable } from "@lauf/store";
 
 export interface Entry {
   org: string;
