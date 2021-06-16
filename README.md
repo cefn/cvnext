@@ -10,7 +10,7 @@ To experiment, please use a desktop Chrome browser. A snapshot of the SPA is pub
 
 A standard PDF CV without filtering or summarisation is available at https://cefn.com/blog/files/cv.pdf
 
-The project is written in Typescript using NextJS, React and my own state-management solution [@lauf/lauf-store](https://www.npmjs.com/package/@lauf/lauf-store). It is published as a static, purely-client-side Single Page Application.
+The project is written in Typescript using NextJS, React and my own state-management solution [@lauf/store](https://www.npmjs.com/package/@lauf/store). It is published as a static, purely-client-side Single Page Application.
 
 Multi-platform support (any non-Chrome, non-Firefox or mobile browsers) is unlikely and not worth it for this experimental testing ground.
 

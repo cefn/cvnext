@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ButtonGroup, Grid, Paper } from "@material-ui/core";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Store } from "@lauf/lauf-store";
+import { Store } from "@lauf/store";
 import type { AppState } from "../types";
 import { DetailRadio } from "./controls/DetailRadio";
 import { LengthSlider } from "./controls/LengthSlider";

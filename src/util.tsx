@@ -1,4 +1,4 @@
-import type { Immutable } from "@lauf/lauf-store";
+import type { Immutable } from "@lauf/store";
 import type { Entry, ScoreName, Scorer, Tag } from "./types";
 
 const LAUNCH_TIME = new Date().getTime();

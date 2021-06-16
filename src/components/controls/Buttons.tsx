@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Button } from "@material-ui/core";
-import { Store } from "@lauf/lauf-store";
+import { Store } from "@lauf/store";
 import type { AppState } from "../../types";
 import { INITIAL_APPSTATE } from "../../logic";
 import { saveAs } from "file-saver";
