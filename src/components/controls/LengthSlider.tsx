@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Store } from "@lauf/lauf-store";
+import { Store } from "@lauf/store";
 import {
   FormLabel,
   Slider,
@@ -8,7 +8,7 @@ import {
   Theme,
   Typography
 } from "@material-ui/core";
-import { useSelected } from "@lauf/lauf-store-react";
+import { useSelected } from "@lauf/store-react";
 import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";
 

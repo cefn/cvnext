@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { BasicStore } from "@lauf/lauf-store";
+import { createStore } from "@lauf/store";
 import {
   createStyles,
   Grid,
@@ -12,7 +12,7 @@ import { AppState } from "../src/types";
 import { ensurePriorityEntries, INITIAL_APPSTATE } from "../src/logic";
 import { PDFZoomViewer } from "../src/components/PdfZoomViewer";
 
-const store = new BasicStore<AppState>(INITIAL_APPSTATE);
+const store = createStore<AppState>(INITIAL_APPSTATE);
 
 ensurePriorityEntries(store);
 
@@ -28,12 +28,12 @@ const Index: FunctionComponent = () => {
                 component="p"
                 style={{ padding: "3%" }}
               >
-                A Typescript{" "}
-                <a href="https://www.npmjs.com/package/@lauf/lauf-store">
-                  @lauf/lauf-store
+                A Typescript experiment targeting Desktop Chrome. Construct PDF
+                CVs using Cefn's{" "}
+                <a href="https://www.npmjs.com/package/@lauf/store">
+                  @lauf/store
                 </a>{" "}
-                experiment targeting Desktop Chrome. Construct PDF CVs for Cefn
-                Hoile
+                package.
               </Typography>
               <Controls store={store} />
             </Grid>

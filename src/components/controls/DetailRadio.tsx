@@ -5,8 +5,8 @@ import {
   Radio,
   RadioGroup
 } from "@material-ui/core";
-import { Store } from "@lauf/lauf-store";
-import { useSelected } from "@lauf/lauf-store-react";
+import { Store } from "@lauf/store";
+import { useSelected } from "@lauf/store-react";
 import { AppState, Detail, DETAILS } from "../../types";
 
 export const DetailRadio: FC<{ store: Store<AppState> }> = ({ store }) => {

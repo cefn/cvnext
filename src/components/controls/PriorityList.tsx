@@ -17,8 +17,8 @@ import {
   FormatQuote,
   Language
 } from "@material-ui/icons";
-import { Store } from "@lauf/lauf-store";
-import { useSelected } from "@lauf/lauf-store-react";
+import { Store } from "@lauf/store";
+import { useSelected } from "@lauf/store-react";
 import { List as MovableList, arrayMove } from "react-movable";
 import type { AppState } from "../../types";
 import { ALL_ENTRIES } from "../../data";

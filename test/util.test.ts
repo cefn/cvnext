@@ -1,4 +1,4 @@
-import type { Immutable } from "@lauf/lauf-store";
+import type { Immutable } from "@lauf/store";
 import { CATEGORIES, Entry, SCORENAMES } from "../src/types";
 import { sortEntries } from "../src/util";
 

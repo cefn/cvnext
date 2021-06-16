@@ -1201,21 +1201,19 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@lauf/lauf-store-react@^0.1.0-beta.8":
-  version "0.1.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@lauf/lauf-store-react/-/lauf-store-react-0.1.0-beta.8.tgz#a300aea4c91b01dc4c50c60234283a527456aea0"
-  integrity sha512-sacYE0C3vFIhTdrocjFBh73vnMvgCR5gLm3dbSPLhd9Ijg95DcUZaSrpyVop9B9fgZC1pDfBcp4/gilsBCgrrA==
+"@lauf/store-react@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@lauf/store-react/-/store-react-0.1.1.tgz#00a7f76b5e7a514abfa48cfd960f4ddc578b41f5"
+  integrity sha512-d3noy3J6ZOdVUdYdqds2Bgc33CqjkkXPJ29BMMZEXY1TrYZDr0+VWT4NlAGbqDcaqOF1cqCrorKavDTRgPcuoA==
   dependencies:
-    "@lauf/lauf-store" "^0.1.0-beta.8"
+    "@lauf/store" "^0.1.1"
 
-"@lauf/lauf-store@^0.1.0-beta.8":
-  version "0.1.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@lauf/lauf-store/-/lauf-store-0.1.0-beta.8.tgz#fc36b519f813fef4dbaf942108849c2649d06ae0"
-  integrity sha512-zRjNvoCfNmNoHwx7WvZ4V6y78u0+8oR1T6KvjRd0eSiQnmFyxa78xbqidpcgtWUZu9Zkcf2FJjyhTz9uzDC2Iw==
+"@lauf/store@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@lauf/store/-/store-0.1.1.tgz#2c6646de1c028c46393b5554348f2d01cc58a677"
+  integrity sha512-vH5RRP8apk0YDtQ25djQWd2BQI3Kn1qRFrDGiwwu1Ltf63S8fvptTor/aD7lUl0LDvjzOD4HPOGoAKPE+aQ5gA==
   dependencies:
     immer "^8.0.1"
-    lodash.get "^4.4.2"
-    lodash.set "^4.3.2"
 
 "@material-ui/core@^4.11.4":
   version "4.11.4"
@@ -5003,20 +5001,10 @@ lodash.debounce@^4.0.8:
   resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
-  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
-
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
-
-lodash.set@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
-  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
 lodash.sortby@^4.7.0:
   version "4.7.0"

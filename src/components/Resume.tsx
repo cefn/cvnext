@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { Immutable, Store } from "@lauf/lauf-store";
-import { useSelected } from "@lauf/lauf-store-react";
+import { Immutable, Store } from "@lauf/store";
+import { useSelected } from "@lauf/store-react";
 import { Document, Page, Text, View, Font } from "@react-pdf/renderer";
 import dayjs from "dayjs";
 import { Category, Entry, AppState, CATEGORIES, DETAILS } from "../types";
