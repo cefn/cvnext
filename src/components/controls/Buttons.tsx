@@ -31,7 +31,7 @@ export const DownloadButton: FC<{ store: Store<AppState> }> = ({
   ...props
 }) => (
   <Button onClick={() => downloadPdf(store)} {...props}>
-    Download
+    Get PDF
   </Button>
 );
 

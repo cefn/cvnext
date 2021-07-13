@@ -53,7 +53,7 @@ export const Controls: FC<{ store: Store<AppState> }> = ({ store }) => {
               >
                 <DownloadButton store={store} />
                 <LinkButton href="https://github.com/cefn/cvnext#readme">
-                  About
+                  See Source
                 </LinkButton>
                 <ResetButton store={store} />
               </ButtonGroup>
