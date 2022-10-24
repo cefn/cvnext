@@ -55,6 +55,7 @@ export const DISCIPLINES = [
   "management",
   "facilitation",
   "electronics",
+  "analytics",
   "machine learning",
   "writing",
   "making",
@@ -75,13 +76,19 @@ export const DISCIPLINES = [
 export const TECHNOLOGIES = [
   "typescript",
   "javascript",
-  "node",
   "python",
+  "node",
+  "react",
+  "vue",
+  "vite",
+  "vitest",
+  "pnpm",
+  "github",
+  "jest",
+  "docker",
   "couchdb",
   "solr",
   "aws",
-  "docker",
-  "jest",
 ] as const;
 
 export const TAGS = [...CATEGORIES, ...DISCIPLINES, ...TECHNOLOGIES] as const;
